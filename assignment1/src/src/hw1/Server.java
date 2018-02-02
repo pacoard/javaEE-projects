@@ -13,6 +13,7 @@ public class Server extends Thread{
 	protected Thread runningThread= null;
 	private Socket clientSocket;
 	private static ServerSocket serverSocket;
+	private static int count = 0;
 	
 	public Server(Socket socket){
 		this.clientSocket= socket;
@@ -20,8 +21,6 @@ public class Server extends Thread{
 	
 	public void run(){
         try{  
-            //ServerSocket serverSocket = new ServerSocket(4444);
-	            //Socket clientSocket = serverSocket.accept();
 	            PrintWriter out =
 	                new PrintWriter(clientSocket.getOutputStream(), true);
 	            BufferedReader in = new BufferedReader(
@@ -31,13 +30,17 @@ public class Server extends Thread{
 	            String outputLine;
 	            do{
 		            // Initiate conversation with client
-		            System.out.println("Client connected");
 		            String operation = in.readLine();
-		            System.out.println("515OK -->The request from client is:" + operation);
-		            //Process the operation
-		            double opResult = Server.calculate(operation);
-		            System.out.println("The operation result is: " + opResult);
-		            out.println("The operation result is: " + opResult);
+		            if (operation.equals("COUNT")){
+		            	System.out.println("Number of clients connected: "+count);
+		            	out.println("Number of clients connected: " + count);
+		            }else{
+		            	System.out.println("515OK -->The request from client is:" + operation);
+			            //Process the operation
+			            double opResult = Server.calculate(operation);
+			            System.out.println("The operation result is: " + opResult);
+			            out.println("The operation result is: " + opResult);
+		            }
 	            }while (!in.equals("exit"));
 	        } catch (IOException e) {
 	            System.out.println("Exception caught when trying to listen on port 4444");
@@ -99,6 +102,8 @@ public class Server extends Thread{
     		try{
 	            Socket clientSocket = serverSocket.accept();
 	            new Server(clientSocket).start();
+	            count++;
+	            
 	        } catch (Exception e){
 	        	System.out.println("Server error:"+e.getMessage());
 	        }

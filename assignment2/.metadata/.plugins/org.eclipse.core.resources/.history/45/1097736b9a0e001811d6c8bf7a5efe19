@@ -52,95 +52,31 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your email</label>
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="address" class="cols-sm-2 control-label">Your address</label>
+							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="address" id="address"  placeholder="Enter your address"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="city" class="cols-sm-2 control-label">Your city</label>
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="state" class="cols-sm-2 control-label">Your state</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<select name="state">
-									   <option value="1">AL</option> 
-									   <option value="2">AK</option> 
-									   <option value="3">AZ</option> 
-									   <option value="4">AR</option> 
-									   <option value="5">CA</option> 
-									   <option value="6">CO</option> 
-									   <option value="7">CT</option> 
-									   <option value="8">DE</option> 
-									   <option value="9">FL</option> 
-									   <option value="10">GA</option> 
-									   <option value="11">HI</option> 
-									   <option value="12">ID</option> 
-									   <option value="13">IL</option> 
-									   <option value="14">IN</option>
-									   <option value="15">IA</option> 
-									   <option value="16">KS</option> 
-									   <option value="18">KY</option> 
-									   <option value="19">LA</option>
-									   <option value="20">ME</option> 
-									   <option value="21">MD</option> 
-									   <option value="22">MA</option>
-									   <option value="23">MI</option> 
-									   <option value="24">MN</option> 
-									   <option value="25">MS</option>
-									   <option value="26">MO</option> 
-									   <option value="27">MT</option>
-									   <option value="28">NE</option>
-									   <option value="29">NV</option>
-									   <option value="30">NH</option> 
-									   <option value="31">NJ</option>
-									   <option value="32">NM</option>
-									   <option value="33">NY</option>
-									   <option value="34">NC</option>
-									   <option value="35">ND</option>
-									   <option value="36">OH</option>
-									   <option value="37">OK</option>
-									   <option value="38">OR</option>
-									   <option value="39">PA</option>
-									   <option value="40">RI</option>
-									   <option value="41">SC</option>
-									   <option value="42">SD</option>
-									   <option value="43">TN</option>
-									   <option value="44">TX</option>
-									   <option value="45">UT</option>
-									   <option value="46">VT</option>
-									   <option value="47">VA</option>
-									   <option value="48">WA</option>
-									   <option value="49">WV</option>
-									   <option value="50">WI</option>
-									   <option value="51">WY</option>
-									   <option value="52">GU</option>
-									   <option value="53">PR</option>
-									   <option value="54">VI</option>
-									</select>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
 								</div>
 							</div>
 						</div>

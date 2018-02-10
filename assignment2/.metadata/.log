@@ -1,0 +1,38 @@
+!SESSION 2018-02-10 11:30:28.054 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/raquel/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/raquel/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2018-02-10 11:31:00.415
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2018-02-10 11:31:04.736
+!MESSAGE Registering: com.google.appengine.eclipse.sdkbundle_1.9.34
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2018-02-10 11:31:04.840
+!MESSAGE Registering: com.google.gwt.eclipse.sdkbundle_2.7.0
+
+!ENTRY com.android.ide.eclipse.ddms 4 0 2018-02-10 11:31:09.127
+!MESSAGE DDMS files not found: /Users/raquel/Library/Android/sdk/tools/traceview 
+
+!ENTRY com.android.ide.eclipse.ddms 4 0 2018-02-10 11:31:09.150
+!MESSAGE DDMS files not found: /Users/raquel/Library/Android/sdk/tools/traceview 
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-02-10 11:32:12.868
+!MESSAGE Could not bind a reference of component org.eclipse.fx.core.internal.JUtilLoggerFactory. The reference is: Reference[name = registerHandler, interface = java.util.logging.Handler, policy = dynamic, policy-option = greedy, cardinality = 0..n, target = null, bind = registerHandler, unbind = unregisterHandler, updated = null]
+
+!ENTRY com.google.gwt.eclipse.core 1 0 2018-02-10 11:32:15.085
+!MESSAGE Reset default editor for extension: xml
+
+!ENTRY com.google.gdt.eclipse.core 2 0 2018-02-10 11:32:27.209
+!MESSAGE Unable to connect to https://dl.google.com/eclipse/plugin/core/4.5/site.xml.
+
+!ENTRY com.google.appengine.eclipse.core 4 0 2018-02-10 11:32:31.773
+!MESSAGE Datanucleus enhancer terminated with exit code 1.
+Navigate to the console view for "Datanucleus Enhancer" for more information
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-02-10 11:32:32.408
+!MESSAGE Could not bind a reference of component org.eclipse.fx.ide.css.cssext.ui.internal.DefaultCssExtProvider. The reference is: Reference[name = ICSSExtModelProvider, interface = org.eclipse.fx.ide.css.cssext.ICSSExtModelProvider, policy = dynamic, cardinality = 0..n, target = null, bind = bindCssExtensionModelProvider, unbind = unbindCssExtensionModelProvider]

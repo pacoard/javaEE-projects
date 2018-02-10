@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
   <runtime name="Google App Engine"/>
+  <secondary-runtime name="App Engine Standard Runtime"/>
+  <secondary-runtime name="Apache Tomcat v8.5"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>
   <fixed facet="java"/>
@@ -8,4 +10,5 @@
   <installed facet="jst.web" version="2.5"/>
   <installed facet="com.google.appengine.facet" version="1"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="com.google.cloud.tools.eclipse.appengine.facets.standard" version="JRE8"/>
 </faceted-project>

@@ -1,0 +1,15 @@
+package com.example.myproject;
+
+import java.io.IOException;
+import java.net.*;
+
+import com.sun.net.httpserver.HttpServer;
+
+
+@SuppressWarnings("serial")
+public class Assignment2Servlet extends HttpServer {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Hello, world");
+	}
+}

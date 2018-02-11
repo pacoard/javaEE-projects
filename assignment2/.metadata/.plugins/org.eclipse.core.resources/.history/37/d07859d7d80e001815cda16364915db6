@@ -25,7 +25,7 @@
 							<label for="name" class="cols-sm-2 control-label">Your name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your name" required pattern=".{4,40}"/>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your name"/>
 								</div>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 							<label for="ssn" class="cols-sm-2 control-label">Your Social Security Number</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="ssn" id="ssn"  required pattern="\d{3}-?\d{2}-?\d{4}" placeholder="Enter your Social Security Number"/>
+									<input type="text" class="form-control" name="ssn" id="ssn"  placeholder="Enter your Social Security Number"/>
 								</div>
 							</div>
 						</div>

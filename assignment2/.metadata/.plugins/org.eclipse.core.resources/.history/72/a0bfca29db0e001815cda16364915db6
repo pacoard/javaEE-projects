@@ -25,7 +25,7 @@
 							<label for="name" class="cols-sm-2 control-label">Your name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your name" required pattern=".{4,50}"/>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your name" required pattern=".{4,40}"/>
 								</div>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 							<label for="address" class="cols-sm-2 control-label">Your address</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="address" id="address"  placeholder="Enter your address" required pattern=".{4,50}"/>
+									<input type="text" class="form-control" name="address" id="address"  placeholder="Enter your address"/>
 								</div>
 							</div>
 						</div>
@@ -70,7 +70,7 @@
 							<label for="city" class="cols-sm-2 control-label">Your city</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city" required pattern=".{3,50}"/>
+									<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city"/>
 								</div>
 							</div>
 						</div>

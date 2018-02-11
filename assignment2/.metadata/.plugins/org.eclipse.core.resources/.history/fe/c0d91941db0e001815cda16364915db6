@@ -70,7 +70,7 @@
 							<label for="city" class="cols-sm-2 control-label">Your city</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city" required pattern=".{3,50}"/>
+									<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city"/>
 								</div>
 							</div>
 						</div>

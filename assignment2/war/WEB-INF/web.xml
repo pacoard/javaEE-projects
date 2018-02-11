@@ -6,7 +6,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>Servlet</servlet-name>
-		<servlet-class>edu.iit.itmd515.Servlet.java</servlet-class>
+		<servlet-class>edu.iit.itmd515.Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Servlet</servlet-name>

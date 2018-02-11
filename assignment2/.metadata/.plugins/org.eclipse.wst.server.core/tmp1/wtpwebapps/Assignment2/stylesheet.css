@@ -1,6 +1,6 @@
 
 #playground-container {
-    height: 500px;
+    height: 1000px;
     overflow: hidden !important;
     -webkit-overflow-scrolling: touch;
 }
@@ -9,7 +9,7 @@ body, html{
  	background-repeat: no-repeat;
  	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
  	font-family: 'Oxygen', sans-serif;
-	    background-size: cover;
+	background-size: cover;
 }
 
 .main{
@@ -38,7 +38,8 @@ label{
 input,
 input::-webkit-input-placeholder {
     font-size: 11px;
-    padding-top: 3px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 .main-login{
@@ -54,17 +55,18 @@ input::-webkit-input-placeholder {
 }
 .form-control {
     height: auto!important;
-padding: 8px 12px !important;
+	padding: 8px 2px !important;
 }
 .input-group {
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    padding: 8px 2px !important;
 }
 #button {
     border: 1px solid #ccc;
     margin-top: 28px;
-    padding: 6px 12px;
+    padding: 10px 12px;
     color: #666;
     text-shadow: 0 1px #fff;
     cursor: pointer;
@@ -89,20 +91,23 @@ padding: 8px 12px !important;
  	max-width: 400px;
     padding: 10px 40px;
 	background:#009edf;
-	    color: #FFF;
+	color: #FFF;
     text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 
 }
 span.input-group-addon i {
     color: #009edf;
     font-size: 17px;
+    margin-top: 30px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 .login-button{
-	margin-top: 5px;
+	margin-top: 20px;
 }
 
 .login-register{

@@ -7,13 +7,20 @@ import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.*;
 
 
-@SuppressWarnings("serial")
+/**
+ * Servlet that attends to the URL /ValidateFormData
+ *
+ * @author Raquel, Francisco
+ *
+ */
+@WebServlet("/ValidateFormData")
 public class ValidationServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,7 +32,7 @@ public class ValidationServlet extends HttpServlet {
 		
 		String name = req.getParameter("name");
 		String ssn = req.getParameter("ssn");
-		int zipCode = Integer.valueOf(req.getParameter("zipcode"));
+		String zipCode = req.getParameter("zipcode");
 		String email = req.getParameter("email");
 		String address = req.getParameter("address");
 		String city = req.getParameter("city");
@@ -39,19 +46,16 @@ public class ValidationServlet extends HttpServlet {
 		
 		String errorMsg = "";
 		for (ConstraintViolation<FormDataBean> violation : violations) {
-		    errorMsg += violation.getMessage() + "\n"; 
+		    errorMsg += violation.getMessage() + ". "; 
 		}
 		
 		if (!"".equals(errorMsg)) {
 			req.getSession().setAttribute("errorMsg" , errorMsg);
-			RequestDispatcher view = req.getRequestDispatcher("ValidateFormDate.jsp");
-			view.forward ( req , res );
+			RequestDispatcher view = req.getRequestDispatcher("GetFormData.jsp");
+			view.forward(req, res);
 		} else {
 			req.getSession().setAttribute( "bean" , dataBean );
-			ServletContext web1 = getServletContext();
-			ServletContext web2 = web1.getContext("/web2");
-			RequestDispatcher dispatcher = web2.getRequestDispatcher("/servlet2");
-			dispatcher.forward(req, res);
+			res.sendRedirect(req.getContextPath() + "/ProcessFormData");
 		}
 	}
 	

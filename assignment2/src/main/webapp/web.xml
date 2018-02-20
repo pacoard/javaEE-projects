@@ -19,7 +19,11 @@
         <servlet-class>edu.iit.itmd515.ProcessCustomerDataSerlet</servlet-class>
     </servlet>
     <servlet-mapping>
-	    <servlet-name>ProcessCustomerData</servlet-name>
+	    <servlet-name>Validation</servlet-name>
 	    <url-pattern>/ValidateFormData</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+	    <servlet-name>ProcessCustomerData</servlet-name>
+	    <url-pattern>/ProcessFormData</url-pattern>
   	</servlet-mapping>
 </web-app>

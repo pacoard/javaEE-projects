@@ -11,17 +11,20 @@
   </properties>
 
   <dependencies>
+ 	<!-- Jetty (serve on localhost)-->
   	<dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
       <version>${jettyVersion}</version>
     </dependency>
+    <!-- Servlets -->
     <dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
 		<version>3.1.0</version>
 		<scope>provided</scope>
     </dependency>
+    <!-- Bean Validation -->
     <dependency>
   		<groupId>javax.validation</groupId>
   		<artifactId>validation-api</artifactId>
@@ -32,7 +35,44 @@
 	    <artifactId>jstl</artifactId>
 	    <version>1.2</version>
 	</dependency>
+	<!-- Bean Validation of Hibernate tags  -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>5.2.1.Final</version>
+	</dependency>
+	<!-- Hibernate tags  -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-validator-annotation-processor</artifactId>
+	    <version>5.2.1.Final</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/geoGoogle/geoGoogle -->
+	<dependency>
+	    <groupId>geoGoogle</groupId>
+	    <artifactId>geoGoogle</artifactId>
+	    <version>1.5.0</version>
+	</dependency>
+	<!-- http://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20090211</version>
+	</dependency>
   </dependencies>
+  <!-- http://geo-google.sourceforge.net/installation.html -->
+  <repositories>
+        <repository>
+                <releases>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                        <enabled>true</enabled>
+                </releases>
+                <id>geogoogle</id>
+                <name>geogoogle repo</name>
+                <url>http://www.cs.drexel.edu/~zl25/maven2/repo</url>
+        </repository>
+  </repositories> 
 
   <build>
     <plugins>

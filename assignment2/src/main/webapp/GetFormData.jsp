@@ -20,22 +20,19 @@
 
 		<title>Programming Assignment 2</title>
 	</head>
-	<c:if test="${not empty errorMsg }">
- 
-	    <script>
-	    	alert("${errorMsg}");
-	    </script>
-   	 <%
-    	//remove alert so it does not show again
-    	session.setAttribute("errorMsg", null);
-     %>
-	</c:if>
 	<body>
 		<div class="container" >
 			<div class="row main">
 				<div class="main-login main-center">
-					<form class="" method="post" action="/ValidateFormData">
+					<form class="" method="post" action="ValidateFormData">
 						<div class="form-group">
+						<c:if test="${not empty errorMsg }">
+	 						<p>Error: ${errorMsg}</p>
+					   	 <%
+					    	//remove alert so it does not show again
+					    	session.setAttribute("errorMsg", null);
+					     %>
+						</c:if>
 							<label for="name" class="cols-sm-2 control-label">Your name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">

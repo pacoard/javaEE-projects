@@ -32,7 +32,7 @@ public class Consumer {
 	private String phone;
 	private int cardNumber;
 	private String location;
-	private int rating;
+	private Double rating;
 	
 	/**
 	 * Constructor Consumer
@@ -46,7 +46,7 @@ public class Consumer {
 	 * @param rating
 	 */
 	public Consumer(String email, String password, String name, String phone, int cardNumber, String location,
-			int rating) {
+			Double rating) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -188,7 +188,7 @@ public class Consumer {
 	/**
 	 * @return the rating
 	 */
-	public int getRating() {
+	public Double getRating() {
 		return rating;
 	}
 
@@ -197,7 +197,7 @@ public class Consumer {
 	/**
 	 * @param rating the rating to set
 	 */
-	public void setRating(int rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 

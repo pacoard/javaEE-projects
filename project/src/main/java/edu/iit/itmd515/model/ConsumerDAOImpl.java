@@ -1,12 +1,8 @@
 package edu.iit.itmd515.model;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-
 
 /**
  * ConsumerDAO methods implementation
@@ -25,26 +21,35 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 		return instance;
 	}
 	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber,
-			String location, int rating) {
-		// TODO Auto-generated method stub
-		return null;
+			String location, double rating) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Consumer c = new Consumer(email,password,name,phone,cardNumber,location,rating);
+		em.persist(c);
+		em.close();
+		return c;
 	}
 	public List<Consumer> getAllConsumers() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT m FROM Consumers m");
+		List<Consumer> cs = q.getResultList();
+		em.close();
+		return cs;
 	}
-	public Consumer updateConsumer(String email, String password, String name, String phone, int cardNumber,
-			String location, int rating) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateConsumer(Consumer c) {
+		EntityManager em = EMFService.get().createEntityManager();
+		em.merge(c);
+		em.close();
 	}
 	public void deleteAllConsumers() {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = EMFService.get().createEntityManager();
+		em.createQuery("DELETE FROM Consumers e").executeUpdate();
+		em.close();
 	}
 	public void deleteConsumerById(Long id) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = EMFService.get().createEntityManager();
+		Consumer c = em.find(Consumer.class, id);
+		em.remove(c);
+		em.close();
 	}
 	
 	

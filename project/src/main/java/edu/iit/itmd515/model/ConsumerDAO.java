@@ -22,7 +22,7 @@ public interface ConsumerDAO {
 	 * @param rating
 	 * @return created Consumer
 	 */
-	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber, String location, int rating);
+	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber, String location, double rating);
 	
 	/**
 	 * Read method
@@ -43,7 +43,7 @@ public interface ConsumerDAO {
 	 * @param rating
 	 * @return updated Consumer
 	 */
-	public Consumer updateConsumer(String email, String password, String name, String phone, int cardNumber, String location, int rating);
+	public void updateConsumer(Consumer c);
 	
 	/**
 	 *  Delete all method

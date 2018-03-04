@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <consumers>
+        <consumer>
+            <!-- <consumerId></consumerId> -->
+            <email>con1@email</email>
+            <password>pass</password>
+            <name>con1</name>
+            <phoneNumber>111111111</phoneNumber>
+            <cardNumber>8648615</cardNumber>
+            <location>here</location>
+            <rating>5</rating>
+        </consumer>
+
+        <consumer>
+            <!-- <consumerId></consumerId> -->
+            <email>con2@email</email>
+            <password>pass</password>
+            <name>con2</name>
+            <phoneNumber>222222222</phoneNumber>
+            <cardNumber>8648615</cardNumber>
+            <location>there</location>
+            <rating>4</rating>
+        </consumer>
+
+        <consumer>
+            <!-- <consumerId></consumerId> -->
+            <email>con3@email</email>
+            <password>pass</password>
+            <name>con3</name>
+            <phoneNumber>333333333</phoneNumber>
+            <cardNumber>8648615</cardNumber>
+            <location>nowhere</location>
+            <rating>3.5</rating>
+        </consumer>
+    </consumers>
+    <drivers>
+        <driver>
+            <!-- <driverId></driverId> -->
+            <email>dri1@email</email>
+            <password>pass</password>
+            <name>pass</name>
+            <phoneNumber>444444444</phoneNumber>
+            <status>occupied</status>
+            <location>nowhere</location>
+            <rating>5</rating>
+        </driver>
+
+        <driver>
+            <!-- <driverId></driverId> -->
+            <email>dri2@email</email>
+            <password>pass</password>
+            <name>pass</name>
+            <phoneNumber>555555555</phoneNumber>
+            <status>free</status>
+            <location>here</location>
+            <rating>5</rating>
+        </driver>
+
+        <driver>
+            <!-- <driverId></driverId> -->
+            <email>dri3@email</email>
+            <password>pass</password>
+            <name>pass</name>
+            <phoneNumber>666666666</phoneNumber>
+            <status>free</status>
+            <location>there</location>
+            <rating>5</rating>
+        </driver>
+    </drivers>
+    <cars>
+        <car>
+            <!-- <carId></carId> -->
+            <driverId type="foreignKey">dri1</driverId>
+            <brand>Lamborghini</brand>
+            <seats>4</seats>
+            <color>silver</color>
+            <plate>11111 IL</plate>
+        </car>
+
+        <car>
+            <!-- <carId></carId> -->
+            <driverId type="foreignKey">dri2</driverId>
+            <brand>Ferrari</brand>
+            <seats>4</seats>
+            <color>red</color>
+            <plate>22222 MA</plate>
+        </car>
+
+        <car>
+            <!-- <carId></carId> -->
+            <driverId type="foreignKey">dri3 </driverId>
+            <brand>Aston Martin</brand>
+            <seats>6</seats>
+            <color>black</color>
+            <plate>33333 IL</plate>
+        </car>
+    </cars>
+    <requests>
+        <request>
+            <!-- <requestId></requestId> -->
+            <consumerId type="foreignKey">con1</consumerId>
+            <location>here</location>
+            <time>now</time>
+            <type>person</type>
+        </request>
+
+        <request>
+            <!-- <requestId></requestId> -->
+            <consumerId type="foreignKey">con2</consumerId>
+            <location>there</location>
+            <time>now</time>
+            <type>package</type>
+        </request>
+
+        <request>
+            <!-- <requestId></requestId> -->
+            <consumerId type="foreignKey">con3</consumerId>
+            <location>nowhere</location>
+            <time>now</time>
+            <type>package</type>
+        </request>
+    </requests>
+    <trips>
+        <trip>
+            <!-- <tripId></tripId> -->
+            <consumerId type="foreignKey">con1</consumerId>
+            <driverId type="foreignKey">dri1</driverId>
+            <distance>2.3</distance>
+            <pickupLocation>here</pickupLocation>
+            <dropoffLocation>somewhere else</dropoffLocation>
+            <price>9.06</price>
+        </trip>
+
+        <trip>
+            <!-- <tripId></tripId> -->
+            <consumerId type="foreignKey">con2</consumerId>
+            <driverId type="foreignKey">dri2</driverId>
+            <distance>4</distance>
+            <pickupLocation>there</pickupLocation>
+            <dropoffLocation>somewhere else</dropoffLocation>
+            <price>15.41</price>
+        </trip>
+
+        <trip>
+            <!-- <tripId></tripId> -->
+            <consumerId type="foreignKey">con3</consumerId>
+            <driverId type="foreignKey">dri3</driverId>
+            <distance>6.7</distance>
+            <pickupLocation>nowhere</pickupLocation>
+            <dropoffLocation>somewhere else</dropoffLocation>
+            <price>27.90</price>
+        </trip>
+    </trips>
+</data>

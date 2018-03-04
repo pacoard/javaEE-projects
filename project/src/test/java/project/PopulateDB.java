@@ -14,6 +14,8 @@ import org.hibernate.mapping.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NamedNodeMap;
 
@@ -21,12 +23,20 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+
+/**
+ * PopulateDB implementation for parsing XML file into DB
+ * 
+ * @author Francisco, Raquel
+ *
+ */
 
 public class PopulateDB {
 
-//	public PopulateDB() {}
 //
 //	public static void main(String[] args) {
 //		
@@ -39,6 +49,7 @@ public class PopulateDB {
 //		
 //		consumer_dao.getAllConsumers().toString();
 //	}
+
 	
 	 public static void main(String argv[]) {
 
@@ -79,23 +90,26 @@ public class PopulateDB {
 					System.out.println("rating : " + driver.getElementsByTagName("rating").item(0).getTextContent());
 					
 			        //Prepare the insertion into SQL statement for each table
-			        //PreparedStatement stmt = conn.prepareStatement("INSERT INTO consumer(\n" +
-			                  //"  email, password, name, phone_num, card_num,\n" +
-			                  //"  location, rating)\n" +
-			                  //"  VALUES(?, ?, ?, ?, ?,?, ?)");
-					
+			       /* PreparedStatement stmt = conn.prepareStatement("INSERT INTO consumer(\n" +
+			                  "  email, password, name, phone_num, card_num,\n" +
+			                  "  location, rating)\n" +
+			                  "  VALUES(?, ?, ?, ?, ?,?, ?)");
+					*/
 					// List to insert in the statement
-/*		            List<String> columns = Arrays.asList(driver.getElementsByTagName("email").item(0).getTextContent(),
+		            java.util.List<String> columns = Arrays.asList(driver.getElementsByTagName("email").item(0).getTextContent(),
 		            		driver.getElementsByTagName("password").item(0).getTextContent(),
 		            		driver.getElementsByTagName("name").item(0).getTextContent(),
 		            		driver.getElementsByTagName("phoneNumber").item(0).getTextContent(),
 		            		driver.getElementsByTagName("cardNumber").item(0).getTextContent(),
 		            		driver.getElementsByTagName("location").item(0).getTextContent(),
-		            		driver.getElementsByTagName("rating").item(0).getTextContent());*/
-//		            for (int n = 0 ; n < columns.size() ; n++) {
-//		                stmt.setString(n+1, columns.get(n));
-//		            }
-//		            stmt.execute();
+		            		driver.getElementsByTagName("rating").item(0).getTextContent());
+		            
+		            //Insert values in the prepared statement
+		            for (int n = 0 ; n < columns.size() ; n++) {
+		                //stmt.setString(n+1, columns.get(n));
+		            }
+		            //stmt.execute();
+					//stm.close();
 		        }
 		        
 		        //Loop through driver elements
@@ -114,18 +128,21 @@ public class PopulateDB {
 			                  //"  email, password, name, phone_num, status,\n" +
 			                  //"  location, rating)\n" +
 			                  //"  VALUES(?, ?, ?, ?, ?,?, ?)");
+					
 					// List to insert in the statement
-/*		            List<String> columns = Arrays.asList(driver.getElementsByTagName("email").item(0).getTextContent(),
+/*		            java.util.List<String> columns = Arrays.asList(driver.getElementsByTagName("email").item(0).getTextContent(),
 		            		driver.getElementsByTagName("password").item(0).getTextContent(),
 		            		driver.getElementsByTagName("name").item(0).getTextContent(),
 		            		driver.getElementsByTagName("phoneNumber").item(0).getTextContent(),
 		            		driver.getElementsByTagName("status").item(0).getTextContent(),
 		            		driver.getElementsByTagName("location").item(0).getTextContent(),
 		            		driver.getElementsByTagName("rating").item(0).getTextContent());*/
+					//Insert values in the prepared statement
 //		            for (int n = 0 ; n < columns.size() ; n++) {
 //		                stmt.setString(n+1, columns.get(n));
 //		            }
 //		            stmt.execute();
+//					stmt.close();
 		        }
 		        
 		        //Loop through car elements --> It has attributes!!
@@ -143,7 +160,7 @@ public class PopulateDB {
 			                  //"  VALUES(?, ?, ?, ?, ?)");
 					
 					// List to insert in the statement
-/*		            List<String> columns = Arrays.asList(driver.getElementsByTagName("driverId").item(0).getTextContent(),
+/*		            java.util.List<String> columns = Arrays.asList(driver.getElementsByTagName("driverId").item(0).getTextContent(),
 		            		driver.getElementsByTagName("brand").item(0).getTextContent(),
 		            		driver.getElementsByTagName("seats").item(0).getTextContent(),
 		            		driver.getElementsByTagName("color").item(0).getTextContent(),
@@ -152,6 +169,7 @@ public class PopulateDB {
 //		                stmt.setString(n+1, columns.get(n));
 //		            }
 //		            stmt.execute();
+//					stmt.close();
 		        }
 		        
 		        //Loop through request elements
@@ -168,7 +186,7 @@ public class PopulateDB {
 			                  //"  VALUES(?, ?, ?, ?)");
 					
 					// List to insert in the statement
-/*		            List<String> columns = Arrays.asList(driver.getElementsByTagName("consumerId").item(0).getTextContent(),
+/*		            java.util.List<String> columns = Arrays.asList(driver.getElementsByTagName("consumerId").item(0).getTextContent(),
 		            		driver.getElementsByTagName("location").item(0).getTextContent(),
 		            		driver.getElementsByTagName("time").item(0).getTextContent(),
 		            		driver.getElementsByTagName("type").item(0).getTextContent());*/
@@ -176,6 +194,7 @@ public class PopulateDB {
 //		                stmt.setString(n+1, columns.get(n));
 //		            }
 //		            stmt.execute();
+//					stmt.close();
 		        }
 		        
 		        //Loop through request elements
@@ -195,7 +214,7 @@ public class PopulateDB {
 			                  //"  VALUES(?, ?, ?, ?,?,?)");
 					
 					// List to insert in the statement
-/*		            List<String> columns = Arrays.asList(driver.getElementsByTagName("consumerId").item(0).getTextContent(),
+/*		            java.util.List<String> columns = Arrays.asList(driver.getElementsByTagName("consumerId").item(0).getTextContent(),
 		            		driver.getElementsByTagName("driverId").item(0).getTextContent(),
 		            		driver.getElementsByTagName("distance").item(0).getTextContent(),
 		            		driver.getElementsByTagName("pickupLocation").item(0).getTextContent(),
@@ -205,6 +224,7 @@ public class PopulateDB {
 //		                stmt.setString(n+1, columns.get(n));
 //		            }
 //		            stmt.execute();
+//					stmt.close();
 		        }
 		        
 			  } catch (IOException io) {
@@ -214,7 +234,7 @@ public class PopulateDB {
 			  }
 	 }
 	 
-	  public Connection stablishConnection(){
+	  public static Connection stablishConnection(){
 		  Connection conn = null;
 		    try{
 		        String dbUrl = "jdbc:mysql://localhost/testing";

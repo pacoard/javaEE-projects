@@ -1,8 +1,11 @@
 package project;
 
+import javax.persistence.EntityManager;
+
 import edu.iit.itmd515.model.Consumer;
 import edu.iit.itmd515.model.ConsumerDAO;
 import edu.iit.itmd515.model.ConsumerDAOImpl;
+import edu.iit.itmd515.model.EMFService;
 
 public class PopulateDB {
 

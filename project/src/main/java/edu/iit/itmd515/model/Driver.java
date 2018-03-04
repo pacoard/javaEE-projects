@@ -11,14 +11,14 @@ import javax.persistence.GenerationType;
 
 
 /**
- * Definition of table Consumers
+ * Definition of table Drivers
  * 
  * @author Francisco, Raquel
  *
  */
 @Entity
-@Table(name = "Consumers")
-public class Consumer implements java.io.Serializable {
+@Table(name = "Drivers")
+public class Driver implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 01L;
 	
@@ -29,31 +29,31 @@ public class Consumer implements java.io.Serializable {
 	private String password;
 	private String name;
 	private String phone;
-	private int cardNumber;
+	private String status;
 	private String location;
 	private Double rating;
 	
 	// Constructor (cannot have parameters)
-	public Consumer() {}
+	public Driver() {}
 	
 	/**
-	 * Pseudo-constructor Consumer
+	 * Pseudo-constructor Driver
 	 * 
 	 * @param email
 	 * @param password
 	 * @param name
 	 * @param phone
-	 * @param cardNumber
+	 * @param status
 	 * @param location
 	 * @param rating
 	 */
-	public Consumer(String email, String password, String name, String phone, int cardNumber, String location,
+	public Driver(String email, String password, String name, String phone, String status, String location,
 			Double rating) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.phone = phone;
-		this.cardNumber = cardNumber;
+		this.status = status;
 		this.location = location;
 		this.rating = rating;
 	}
@@ -153,17 +153,17 @@ public class Consumer implements java.io.Serializable {
 	/**
 	 * @return the cardNumber
 	 */
-	public int getCardNumber() {
-		return cardNumber;
+	public String getStatus() {
+		return status;
 	}
 
 
 
 	/**
-	 * @param cardNumber the cardNumber to set
+	 * @param status the status to set
 	 */
-	public void setCardNumber(int cardNumber) {
-		this.cardNumber = cardNumber;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
@@ -209,6 +209,7 @@ public class Consumer implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Consumer [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", cardNumber=" + cardNumber + ", location=" + location + ", rating=" + rating + "]";
+				+ phone + ", status=" + status + ", location=" + location + ", rating=" + rating + "]";
 	}
 }
+

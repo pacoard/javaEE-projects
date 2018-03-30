@@ -22,9 +22,9 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	}
 	
 	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber,
-			String location, double rating) {
+			String location, double rating, int banned) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Consumer c = new Consumer(email, password, name, phone, cardNumber, location, rating);
+		Consumer c = new Consumer(email, password, name, phone, cardNumber, location, rating,banned);
 		em.persist(c);
 		em.close();
 		return c;

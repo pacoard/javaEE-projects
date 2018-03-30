@@ -22,9 +22,9 @@ public class DriverDAOImpl implements DriverDAO {
 	}
 	
 	public Driver createDriver(String email, String password, String name, String phone, String status,
-			String location, double rating) {
+			String location, double rating, int suspended) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Driver d = new Driver(email, password, name, phone, status, location, rating);
+		Driver d = new Driver(email, password, name, phone, status, location, rating, suspended);
 		em.persist(d);
 		em.close();
 		return d;

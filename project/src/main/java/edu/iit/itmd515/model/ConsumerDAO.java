@@ -20,9 +20,10 @@ public interface ConsumerDAO {
 	 * @param cardNumber
 	 * @param location
 	 * @param rating
+	 * @param banned
 	 * @return created Consumer
 	 */
-	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber, String location, double rating);
+	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber, String location, double rating, int banned);
 	
 	/**
 	 * Read method

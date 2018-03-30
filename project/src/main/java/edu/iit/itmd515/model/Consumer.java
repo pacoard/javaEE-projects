@@ -40,6 +40,7 @@ public class Consumer implements java.io.Serializable {
 	private Request request;
 	@OneToOne
 	private Trip trip;
+	private int banned;
 	
 	// Constructor (cannot have parameters)
 	public Consumer() {}
@@ -53,10 +54,11 @@ public class Consumer implements java.io.Serializable {
 	 * @param phone
 	 * @param cardNumber
 	 * @param location
+	 * @param banned
 	 * @param rating
 	 */
 	public Consumer(String email, String password, String name, String phone, int cardNumber, String location,
-			Double rating) {
+			Double rating, int banned) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
@@ -64,6 +66,7 @@ public class Consumer implements java.io.Serializable {
 		this.cardNumber = cardNumber;
 		this.location = location;
 		this.rating = rating;
+		this.banned = banned;
 	}
 	
 	
@@ -223,6 +226,33 @@ public class Consumer implements java.io.Serializable {
 		this.rating = rating;
 	}
 
+	/**
+	 * @return the trip
+	 */
+	public Trip getTrip() {
+		return trip;
+	}
+
+	/**
+	 * @param trip the trip to set
+	 */
+	public void setTrip(Trip trip) {
+		this.trip = trip;
+	}
+
+	/**
+	 * @return the banned
+	 */
+	public int getBanned() {
+		return banned;
+	}
+
+	/**
+	 * @param banned the banned to set
+	 */
+	public void setBanned(int banned) {
+		this.banned = banned;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -230,6 +260,9 @@ public class Consumer implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Consumer [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", cardNumber=" + cardNumber + ", location=" + location + ", rating=" + rating + "]";
+				+ phone + ", cardNumber=" + cardNumber + ", location=" + location + ", rating=" + rating + ", request="
+				+ request + ", trip=" + trip + ", banned=" + banned + "]";
 	}
+
+
 }

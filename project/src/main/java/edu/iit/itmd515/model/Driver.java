@@ -41,6 +41,7 @@ public class Driver implements java.io.Serializable {
 	private String status;
 	private String location;
 	private Double rating;
+	private int suspended;
 	//One driver will receive many requests, but is only going to choose one at the moment
 	@OneToMany
 	private List<Request> requests = new ArrayList<Request>();
@@ -58,9 +59,10 @@ public class Driver implements java.io.Serializable {
 	 * @param status
 	 * @param location
 	 * @param rating
+	 * @param suspended
 	 */
 	public Driver(String email, String password, String name, String phone, String status, String location,
-			Double rating) {
+			Double rating,int suspended) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
@@ -68,6 +70,7 @@ public class Driver implements java.io.Serializable {
 		this.status = status;
 		this.location = location;
 		this.rating = rating;
+		this.suspended = suspended;
 	}
 	
 	
@@ -235,13 +238,30 @@ public class Driver implements java.io.Serializable {
 		this.requests = requests;
 	}
 
+	/**
+	 * @return the suspended
+	 */
+	public int getSuspended() {
+		return suspended;
+	}
+
+	/**
+	 * @param suspended the suspended to set
+	 */
+	public void setSuspended(int suspended) {
+		this.suspended = suspended;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Consumer [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", status=" + status + ", location=" + location + ", rating=" + rating + "]";
+		return "Driver [id=" + id + ", car=" + car + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", phone=" + phone + ", status=" + status + ", location=" + location + ", rating=" + rating
+				+ ", suspended=" + suspended + ", requests=" + requests + "]";
 	}
+
+
 }
 

@@ -20,9 +20,10 @@ import java.util.List;
 		 * @param status
 		 * @param location
 		 * @param rating
+		 * @param suspended
 		 * @return created Driver
 		 */
-		public Driver createDriver(String email, String password, String name, String phone, String status, String location, double rating);
+		public Driver createDriver(String email, String password, String name, String phone, String status, String location, double rating, int suspended);
 		
 		/**
 		 * Read method
@@ -41,7 +42,8 @@ import java.util.List;
 		 * @param status
 		 * @param location
 		 * @param rating
-		 * @return updated Consumer
+		 * @param suspended
+		 * @return updated Driver
 		 */
 		public void updateDriver(Driver v);
 		

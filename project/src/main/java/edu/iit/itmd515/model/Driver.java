@@ -1,8 +1,11 @@
 package edu.iit.itmd515.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
@@ -38,6 +41,9 @@ public class Driver implements java.io.Serializable {
 	private String status;
 	private String location;
 	private Double rating;
+	//One driver will receive many requests, but is only going to choose one at the moment
+	@OneToMany
+	private List<Request> requests = new ArrayList<Request>();
 	
 	// Constructor (cannot have parameters)
 	public Driver() {}
@@ -220,6 +226,14 @@ public class Driver implements java.io.Serializable {
 		this.rating = rating;
 	}
 
+
+	public List<Request> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(List<Request> requests) {
+		this.requests = requests;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

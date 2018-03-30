@@ -21,7 +21,7 @@ public interface CarDAO {
 	 * @param plate
 	 * @return created Car
 	 */
-	public Car createCar(Long driverId, String brand, int nSeats, String color, String plate);
+	public Car createCar(String brand, int nSeats, String color, String plate);
 	
 	/**
 	 * Read method

@@ -22,10 +22,10 @@ public class TripDAOImpl implements TripDAO {
 		return instance;
 	}
 	
-	public Trip createTrip(Long consumerId, Long driverId, double distance, String dropoffLocation, String pickupLocation,
+	public Trip createTrip(double distance, String dropoffLocation, String pickupLocation,
 			double price) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Trip t = new Trip(consumerId, driverId, distance, dropoffLocation, pickupLocation, price);
+		Trip t = new Trip(distance, dropoffLocation, pickupLocation, price);
 		em.persist(t);
 		em.close();
 		return t;

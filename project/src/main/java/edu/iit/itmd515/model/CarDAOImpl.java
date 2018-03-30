@@ -21,9 +21,9 @@ public class CarDAOImpl implements CarDAO{
 			return instance;
 		}
 		
-		public Car createCar(Long driverId, String brand, int nSeats, String color, String plate) {
+		public Car createCar(String brand, int nSeats, String color, String plate) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Car c = new Car(driverId, brand, nSeats, color, plate); //We have to insert driverID
+			Car c = new Car(brand, nSeats, color, plate);
 			em.persist(c);
 			em.close();
 			return c;

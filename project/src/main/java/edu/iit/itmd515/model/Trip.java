@@ -2,6 +2,7 @@ package edu.iit.itmd515.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +26,10 @@ public class Trip {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//@ForeignKey
-	private Long consumerId;
-	//@ForeignKey
-	private Long driverId;
+	@OneToOne
+	private Consumer consumer;
+	@OneToOne
+	private Driver driver;
 	private double distance;
 	private String dropoffLocation;
 	private String pickupLocation;
@@ -48,11 +49,9 @@ public class Trip {
 	 * @param pickupLocation
 	 * @param price
 	 */
-	public Trip(Long consumerId, Long driverId, double distance, String dropoffLocation, String pickupLocation,
+	public Trip(double distance, String dropoffLocation, String pickupLocation,
 			double price) {
 		super();
-		this.consumerId = consumerId;
-		this.driverId = driverId;
 		this.distance = distance;
 		this.dropoffLocation = dropoffLocation;
 		this.pickupLocation = pickupLocation;
@@ -76,35 +75,23 @@ public class Trip {
 	}
 
 
-	/**
-	 * @return the consumerId
-	 */
-	public Long getConsumerId() {
-		return consumerId;
+	public Consumer getConsumer() {
+		return consumer;
 	}
 
 
-	/**
-	 * @param consumerId the consumerId to set
-	 */
-	public void setConsumerId(Long consumerId) {
-		this.consumerId = consumerId;
+	public void setConsumer(Consumer consumer) {
+		this.consumer = consumer;
 	}
 
 
-	/**
-	 * @return the driverId
-	 */
-	public Long getDriverId() {
-		return driverId;
+	public Driver getDriver() {
+		return driver;
 	}
 
 
-	/**
-	 * @param driverId the driverId to set
-	 */
-	public void setDriverId(Long driverId) {
-		this.driverId = driverId;
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 
 
@@ -177,7 +164,7 @@ public class Trip {
 	 */
 	@Override
 	public String toString() {
-		return "Trip [id=" + id + ", consumerId=" + consumerId + ", driverId=" + driverId + ", distance=" + distance
+		return "Trip [id=" + id + ", distance=" + distance
 				+ ", dropoffLocation=" + dropoffLocation + ", pickupLocation=" + pickupLocation + ", price=" + price
 				+ "]";
 	}

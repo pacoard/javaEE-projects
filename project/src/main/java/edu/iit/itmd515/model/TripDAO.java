@@ -21,7 +21,7 @@ public interface TripDAO {
 	 * @param price
 	 * @return created Trip
 	 */
-	public Trip createTrip(Long consumerId, Long driverId, double distance, String dropoffLocation, String pickupLocation,
+	public Trip createTrip(double distance, String dropoffLocation, String pickupLocation,
 			double price);
 	
 	/**

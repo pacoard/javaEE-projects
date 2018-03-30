@@ -2,6 +2,7 @@ package edu.iit.itmd515.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,8 +26,8 @@ public class Request {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//@ForeignKey
-	private Long consumerId;
+	@OneToOne
+	private Consumer consumer;
 	private String Location;
 	private String time;
 	private String type;
@@ -38,15 +39,13 @@ public class Request {
 	 * Pseudo-constructor
 	 * 
 	 * @param id
-	 * @param consumerId
 	 * @param location
 	 * @param time
 	 * @param type
 	 */
-	public Request(Long id, Long consumerId, String location, String time, String type) {
+	public Request(Long id,String location, String time, String type) {
 		super();
 		this.id = id;
-		this.consumerId = consumerId;
 		Location = location;
 		this.time = time;
 		this.type = type;
@@ -68,22 +67,19 @@ public class Request {
 		this.id = id;
 	}
 
-
 	/**
-	 * @return the consumerId
+	 * @return the consumer
 	 */
-	public Long getConsumerId() {
-		return consumerId;
+	public Consumer getConsumer() {
+		return consumer;
 	}
 
-
 	/**
-	 * @param consumerId the consumerId to set
+	 * @param consumer the consumer to set
 	 */
-	public void setConsumerId(Long consumerId) {
-		this.consumerId = consumerId;
+	public void setConsumer(Consumer consumer) {
+		this.consumer = consumer;
 	}
-
 
 	/**
 	 * @return the location
@@ -138,7 +134,7 @@ public class Request {
 	 */
 	@Override
 	public String toString() {
-		return "Request [id=" + id + ", consumerId=" + consumerId + ", Location=" + Location + ", time=" + time
+		return "Request [id=" + id + ", Location=" + Location + ", time=" + time
 				+ ", type=" + type + "]";
 	}
 	

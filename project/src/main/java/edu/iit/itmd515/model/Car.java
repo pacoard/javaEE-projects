@@ -1,12 +1,17 @@
 package edu.iit.itmd515.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ForeignKey;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.CascadeType;
  
 
 // TODO import constraints
@@ -27,12 +32,13 @@ public class Car implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//@ForeignKey
-	private Long driverId;
+	//One car belongs to one driver
+	@OneToOne
+	private Driver driver;
 	private String brand;
 	private int seats;
 	private String color;
-	//@UniqueConstraint
+	@Column(unique = true)
 	private String plate;
 	
 	// Constructor (cannot have parameters)
@@ -47,9 +53,8 @@ public class Car implements java.io.Serializable {
 	 * @param color
 	 * @param plate
 	 */
-	public Car(Long driverId, String brand, int seats, String color, String plate) {
+	public Car(String brand, int seats, String color, String plate) {
 		super();
-		this.driverId = driverId;
 		this.brand = brand;
 		this.seats = seats;
 		this.color = color;
@@ -70,18 +75,13 @@ public class Car implements java.io.Serializable {
 		this.id = id;
 	}
 
-	/**
-	 * @return the driverId
-	 */
-	public Long getDriverId() {
-		return driverId;
+
+	public Driver getDriver() {
+		return driver;
 	}
 
-	/**
-	 * @param driverId the driverId to set
-	 */
-	public void setDriverId(Long driverId) {
-		this.driverId = driverId;
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class Car implements java.io.Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", driverId=" + driverId + ", brand=" + brand + ", seats=" + seats + ", color=" + color
+		return "Car [id=" + id + ", brand=" + brand + ", seats=" + seats + ", color=" + color
 				+ ", plate=" + plate + "]";
 	}
 }

@@ -1,7 +1,9 @@
 package edu.iit.itmd515.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,10 +30,16 @@ public class Consumer implements java.io.Serializable {
 	private String email;
 	private String password;
 	private String name;
+	@Column(unique = true)
 	private String phone;
+	@Column(unique = true)
 	private int cardNumber;
 	private String location;
 	private Double rating;
+	@OneToOne
+	private Request request;
+	@OneToOne
+	private Trip trip;
 	
 	// Constructor (cannot have parameters)
 	public Consumer() {}
@@ -75,8 +83,21 @@ public class Consumer implements java.io.Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	/**
+	 * @return the request
+	 */
 
-
+	public Request getRequest() {
+		return request;
+	}
+	
+	/**
+	 * @param request the request to set
+	 */
+	public void setRequest(Request request) {
+		this.request = request;
+	}
 
 	/**
 	 * @return the email

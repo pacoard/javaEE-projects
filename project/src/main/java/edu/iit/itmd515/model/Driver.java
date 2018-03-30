@@ -1,7 +1,9 @@
 package edu.iit.itmd515.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +27,13 @@ public class Driver implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	//Every driver will drive a car, so we need to link that reference
+	@OneToOne
+	private Car car;
 	private String email;
 	private String password;
 	private String name;
+	@Column(unique = true)
 	private String phone;
 	private String status;
 	private String location;
@@ -76,6 +82,18 @@ public class Driver implements java.io.Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * @return the car
+	 */
+	public Car getCar() {
+		return car;
+	}
+
+	/** @param car the car to set
+	 */
+	public void setCar(Car car) {
+		this.car = car;
+	}
 
 
 	/**

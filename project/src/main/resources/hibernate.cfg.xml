@@ -4,5 +4,17 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+    	<property name="show_sql">true</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/itmd515</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <mapping class="edu.iit.itmd515.model.Car" />
+        <mapping class="edu.iit.itmd515.model.Consumer" />
+        <mapping class="edu.iit.itmd515.model.Driver" />
+        <mapping class="edu.iit.itmd515.model.Request" />
+        <mapping class="edu.iit.itmd515.model.Trip" />
     </session-factory>
 </hibernate-configuration>

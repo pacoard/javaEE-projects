@@ -40,6 +40,7 @@ public class HibernateUtil {
 		driver1.setCar(car1);
 		
 		try{
+			//Init session with the DB at localhost
 			Configuration con = new Configuration().configure();
 			SessionFactory sf= con.buildSessionFactory();
 			Session session = sf.openSession();

@@ -4,7 +4,7 @@
 
 We have reduced our final DB to the following entities and relationships:
 
-![erdplus-diagram](https://user-images.githubusercontent.com/6637058/38157993-5b20451a-3452-11e8-9259-671e1b41f0c9.png))
+![erdplus-diagram](https://user-images.githubusercontent.com/6637058/38157993-5b20451a-3452-11e8-9259-671e1b41f0c9.png)
 
 
 In this project we are going to use a MySQL server launched in our localhost at port 3306. Our particular database named itmd515 will store all the necessary data for our web application to work.

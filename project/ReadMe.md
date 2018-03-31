@@ -4,7 +4,7 @@
 
 We have reduced our final DB to the following entities and relationships:
 
-![ScreenShot](https://github.com/pacoard/javaEE-projects/tree/master/project/erdplus-diagram.png)
+![ScreenShot](project/erdplus-diagram.png?raw=true)
 
 In this project we are going to use a MySQL server launched in our localhost at port 3306. Our particular database named itmd515 will store all the necessary data for our web application to work.
 

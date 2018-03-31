@@ -50,6 +50,7 @@ public class HibernateUtil {
 			Transaction tx =session.beginTransaction();
 			
 			session.save(car1);
+			session.save(driver1);
 	
 			//end the transaction
 			tx.commit();

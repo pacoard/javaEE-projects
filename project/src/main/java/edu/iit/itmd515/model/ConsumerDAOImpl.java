@@ -31,7 +31,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	}
 	public List<Consumer> getAllConsumers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT m FROM Consumers m");
+		Query q = em.createQuery("SELECT * FROM Consumers");
 		List<Consumer> cs = q.getResultList();
 		em.close();
 		return cs;
@@ -43,7 +43,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	}
 	public void deleteAllConsumers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("DELETE FROM Consumers e").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Consumers").executeUpdate();
 		em.close();
 	}
 	public void deleteConsumerById(Long id) {

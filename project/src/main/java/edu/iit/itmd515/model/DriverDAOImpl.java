@@ -31,7 +31,7 @@ public class DriverDAOImpl implements DriverDAO {
 	}
 	public List<Driver> getAllDrivers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT m FROM Drivers m");
+		Query q = em.createQuery("SELECT * FROM Drivers");
 		List<Driver> ds = q.getResultList();
 		em.close();
 		return ds;
@@ -43,7 +43,7 @@ public class DriverDAOImpl implements DriverDAO {
 	}
 	public void deleteAllDrivers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("DELETE FROM Drivers e").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Drivers").executeUpdate();
 		em.close();
 	}
 	public void deleteDriverById(Long id) {

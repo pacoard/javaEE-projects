@@ -30,7 +30,7 @@ public class CarDAOImpl implements CarDAO{
 		}
 		public List<Car> getAllCars() {
 			EntityManager em = EMFService.get().createEntityManager();
-			Query q = em.createQuery("SELECT m FROM Cars m");
+			Query q = em.createQuery("SELECT * FROM Cars");
 			List<Car> cs = q.getResultList();
 			em.close();
 			return cs;
@@ -42,7 +42,7 @@ public class CarDAOImpl implements CarDAO{
 		}
 		public void deleteAllCars() {
 			EntityManager em = EMFService.get().createEntityManager();
-			em.createQuery("DELETE FROM CArs e").executeUpdate();
+			em.createQuery("TRUNCATE TABLE Cars").executeUpdate();
 			em.close();
 		}
 		public void deleteCarById(Long id) {

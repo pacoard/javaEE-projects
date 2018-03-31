@@ -16,5 +16,6 @@
         <mapping class="edu.iit.itmd515.model.Driver" />
         <mapping class="edu.iit.itmd515.model.Request" />
         <mapping class="edu.iit.itmd515.model.Trip" />
+        <mapping class="edu.iit.itmd515.model.Administrator" />
     </session-factory>
 </hibernate-configuration>

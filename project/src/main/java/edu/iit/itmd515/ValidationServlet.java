@@ -36,7 +36,7 @@ public class ValidationServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String address = req.getParameter("address");
 		String city = req.getParameter("city");
-		String state = req.getParameter("state");
+		String state = req.getParameter("state"); 
 		
 		FormDataBean dataBean = new FormDataBean(name, ssn, zipCode, email, address, city, state);
 		

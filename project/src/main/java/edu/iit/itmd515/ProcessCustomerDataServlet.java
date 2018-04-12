@@ -77,7 +77,7 @@ public class ProcessCustomerDataServlet extends HttpServlet {
 	    String str = new String();
 	    while (scan.hasNext())
 	        str += scan.nextLine();
-	    scan.close();
+	    scan.close(); 
 	 
 	    // build a JSON object
 	    JSONObject obj = new JSONObject(str);

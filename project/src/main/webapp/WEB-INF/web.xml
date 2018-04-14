@@ -31,6 +31,7 @@
         <servlet-class>edu.iit.itmd515.AdminServlet</servlet-class>
     </servlet>
     
+
   	<servlet-mapping>
 	    <servlet-name>LoginSignup</servlet-name>
 	    <url-pattern>/login-signup</url-pattern>

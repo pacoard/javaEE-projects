@@ -20,7 +20,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="https://github.com/pacoard/javaEE-projects/tree/master/project8">
+                    <a href="https://github.com/pacoard/javaEE-projects/tree/master/project">
                         <p><i class="fa fa-github"></i> GitHub</p>
                     </a>
                 </li>

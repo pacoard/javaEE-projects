@@ -10,7 +10,7 @@
         <ul id="navbarUL" class="nav">
 
             <li id="welcome">
-                <a href="/welcome">
+                <a href="/">
                     <i class="pe-7s-home"></i>
                     <p>Welcome</p>
                     <% if (false) { %>

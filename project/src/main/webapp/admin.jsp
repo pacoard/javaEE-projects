@@ -25,7 +25,68 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
+                    <div class="col-md-6">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Ban drivers</h4>
+                                </div>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Rating</th>
+                                                <th>Ban</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- For loop to inyect values -->
+                                            <tr>
+                                                <td>Mike</td>
+                                                <td>5</td>
+                                                <td>
+                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
+                                                        href="/admin/ban/ID">
+                                                        <i class="fa fa-ban"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Ban consumers</h4>
+                                </div>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Rating</th>
+                                                <th>Ban</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- For loop to inyect values -->
+                                            <tr>
+                                                <td>Mike</td>
+                                                <td>5</td>
+                                                <td>
+                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
+                                                        href="/admin/ban/ID">
+                                                        <i class="fa fa-ban"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>

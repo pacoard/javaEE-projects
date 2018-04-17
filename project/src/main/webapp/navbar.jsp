@@ -19,6 +19,16 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <% if (session.getAttribute("role") != null) { %>
+                    <li>
+                        <p>Role: ${role}</p>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <p><i class="fa fa-sign-out"></i> Log out</p>
+                        </a>
+                    </li>
+                <% } %>
                 <li>
                     <a href="https://github.com/pacoard/javaEE-projects/tree/master/project">
                         <p><i class="fa fa-github"></i> GitHub</p>

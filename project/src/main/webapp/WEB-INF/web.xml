@@ -6,6 +6,10 @@
    metadata-complete="false"
    version="3.1">
 
+<context-param>
+    <param-name>com.sun.faces.expressionFactory</param-name>
+    <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+</context-param>
     <welcome-file-list>
      	<welcome-file>welcome.jsp</welcome-file>
    	</welcome-file-list>

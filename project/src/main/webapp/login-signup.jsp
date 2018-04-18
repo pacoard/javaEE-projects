@@ -31,18 +31,18 @@
                                     <h4 class="title">New member? Sign Up</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="/login-signup/signup" method="post">
+                                    <form action="/login-signup" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" value="Mike">
+                                                    <input type="text" class="form-control" name="name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" value="mike@mike.mike">
+                                                    <input type="text" class="form-control" name="email">
                                                 </div>
                                             </div>
                                         </div>
@@ -51,13 +51,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Phone</label>
-                                                    <input type="text" class="form-control" value="12346789">
+                                                    <input type="text" class="form-control" name="phone">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Card Number</label>
-                                                    <input type="text" class="form-control" value="1111-2222-3333-4444">
+                                                    <input type="text" class="form-control" name="card_number">
                                                 </div>
                                             </div>
                                             
@@ -67,18 +67,30 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" class="form-control" value="pass">
+                                                    <input type="password" class="form-control" name="password">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Repeat Password</label>
-                                                    <input type="password" class="form-control" value="pass">
+                                                    <input type="password" class="form-control" name="password">
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Sign Up</button>
+										<div class="row">
+                                            <div class="col-md-6">
+				        						 <div class="form-group">
+				                                 	<label>User type</label>
+				                                        <select type="text" class="form-control" name="role">
+				                                        	<option value="NONE">---</option>
+				                                            <option value="Administrator">Administrator</option>
+				                                            <option value="Consumer">Consumer</option>
+				                                            <option value="Driver">Driver</option>
+				                                        </select>
+				                                 </div>
+				                             </div>
+				                         </div>           
+                                        <button type="submit" name="signup" class="btn btn-info btn-fill pull-right">Sign Up</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -95,7 +107,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" value="mike@mike.mike">
+                                                    <input type="text" class="form-control" name="emailLI" >
                                                 </div>
                                             </div>
                                         </div>
@@ -104,12 +116,25 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" class="form-control" value="pass">
+                                                    <input type="password" name="passwordLI" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+				        						 <div class="form-group">
+				                                 	<label>User type</label>
+				                                        <select type="text" class="form-control" name="roleLI">
+				                                        	<option value="NONE">---</option>
+				                                            <option value="Administrator">Administrator</option>
+				                                            <option value="Consumer">Consumer</option>
+				                                            <option value="Driver">Driver</option>
+				                                        </select>
+				                                 </div>
+				                             </div>
+				                         </div>  
 
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Log In</button>
+                                        <button type="submit" name="login" class="btn btn-info btn-fill pull-right">Log In</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>

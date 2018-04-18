@@ -33,7 +33,7 @@ public class Consumer implements java.io.Serializable {
 	@Column(unique = true)
 	private String phone;
 	@Column(unique = true)
-	private int cardNumber;
+	private String cardNumber;
 	private String location;
 	private Double rating;
 	@OneToOne
@@ -57,7 +57,7 @@ public class Consumer implements java.io.Serializable {
 	 * @param banned
 	 * @param rating
 	 */
-	public Consumer(String email, String password, String name, String phone, int cardNumber, String location,
+	public Consumer(String email, String password, String name, String phone, String cardNumber, String location,
 			Double rating, int banned) {
 		this.email = email;
 		this.password = password;
@@ -177,7 +177,7 @@ public class Consumer implements java.io.Serializable {
 	/**
 	 * @return the cardNumber
 	 */
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
@@ -186,7 +186,7 @@ public class Consumer implements java.io.Serializable {
 	/**
 	 * @param cardNumber the cardNumber to set
 	 */
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 

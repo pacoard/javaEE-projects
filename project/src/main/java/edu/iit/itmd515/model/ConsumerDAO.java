@@ -23,7 +23,7 @@ public interface ConsumerDAO {
 	 * @param banned
 	 * @return created Consumer
 	 */
-	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber, String location, double rating, int banned);
+	public Consumer createConsumer(String email, String password, String name, String phone, String cardNumber, String location, double rating, int banned);
 	
 	/**
 	 * Read method

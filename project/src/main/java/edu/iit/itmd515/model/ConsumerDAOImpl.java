@@ -21,7 +21,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 		return instance;
 	}
 	
-	public Consumer createConsumer(String email, String password, String name, String phone, int cardNumber,
+	public Consumer createConsumer(String email, String password, String name, String phone, String cardNumber,
 			String location, double rating, int banned) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Consumer c = new Consumer(email, password, name, phone, cardNumber, location, rating,banned);

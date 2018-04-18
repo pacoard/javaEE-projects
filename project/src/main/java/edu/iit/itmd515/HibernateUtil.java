@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.fasterxml.classmate.AnnotationConfiguration;
+
 import edu.iit.itmd515.model.Car;
 import edu.iit.itmd515.model.Driver;
 
@@ -17,7 +19,7 @@ import edu.iit.itmd515.model.Driver;
 
 public class HibernateUtil {
 	
-	public static void main(String[] args){
+/*	public static void main(String[] args)
 		
 		//Set values for an entity
 		Car car1 = new Car();
@@ -37,9 +39,10 @@ public class HibernateUtil {
 		
 		//Relationship between objects
 		car1.setDriver(driver1);
-		driver1.setCar(car1);
+		driver1.setCar(car1);*/
 		
-		try{
+		
+/*		try{
 			//Init session with the DB at localhost
 			Configuration con = new Configuration().configure();
 			SessionFactory sf= con.buildSessionFactory();
@@ -63,6 +66,27 @@ public class HibernateUtil {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
+	
+    //private static final SessionFactory sessionFactory;
+	static Configuration con;
+	static SessionFactory sf;
+	static Session session;
+	
+    static {
+        try {
+			con = new Configuration().configure();
+			sf= con.buildSessionFactory();
+			
+			System.out.println("Session iniciated");
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+ 
+    public static Session openSession() {
+        return session = sf.openSession();
+    }
 
 }

@@ -9,8 +9,14 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <properties>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/itmd515" />
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.password" value="password"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.hbm2ddl.auto" value="update" />
+      <property name="entitymanager.packages.to.scan" value="edu.iit.itmd515.model"/>
     </properties>
 
   </persistence-unit>

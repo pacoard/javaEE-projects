@@ -102,7 +102,7 @@
                                     <h4 class="title">Already a member? Log In</h4>
                                 </div>
                                 <div class="content">
-                                    <form>
+                                    <form action="/login-signup" method="post">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -116,7 +116,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" name="passwordLI" class="form-control">
+                                                    <input type="password" name="passwordLI" class="form-control" value="pass">
                                                 </div>
                                             </div>
                                         </div>

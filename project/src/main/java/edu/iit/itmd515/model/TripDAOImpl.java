@@ -32,7 +32,7 @@ public class TripDAOImpl implements TripDAO {
 	}
 	public List<Trip> getAllTrips() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Trips");
+		Query q = em.createQuery("SELECT t FROM Trip t");
 		List<Trip> ts = q.getResultList();
 		em.close();
 		return ts;
@@ -44,7 +44,7 @@ public class TripDAOImpl implements TripDAO {
 	}
 	public void deleteAllTrips() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("TRUNCATE TABLE Trips").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Trip").executeUpdate();
 		em.close();
 	}
 	public void deleteTripsById(Long id) {

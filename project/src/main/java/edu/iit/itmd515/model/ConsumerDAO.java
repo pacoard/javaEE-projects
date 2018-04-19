@@ -45,6 +45,7 @@ public interface ConsumerDAO {
 	 * @return updated Consumer
 	 */
 	public void updateConsumer(Consumer c);
+	public Long getConsumerId(Consumer c);
 	
 	/**
 	 *  Delete all method

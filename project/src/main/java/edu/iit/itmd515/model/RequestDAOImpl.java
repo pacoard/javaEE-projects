@@ -35,11 +35,12 @@ public class RequestDAOImpl implements RequestDAO{
 	}
 	public List<Request> getAllRequests() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Requests");
+		Query q = em.createQuery("SELECT r FROM Request r");
 		List<Request> rs = q.getResultList();
 		em.close();
 		return rs;
 	}
+
 	public void updateRequest(Request r) {
 		EntityManager em = EMFService.get().createEntityManager();
 		em.merge(r);
@@ -47,7 +48,7 @@ public class RequestDAOImpl implements RequestDAO{
 	}
 	public void deleteAllRequests() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("TRUNCATE TABLE Requests").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Request").executeUpdate();
 		em.close();
 	}
 	public void deleteRequestsById(Long id) {

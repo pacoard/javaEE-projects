@@ -2,6 +2,7 @@ package edu.iit.itmd515.model;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -14,7 +15,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	
 	// Singleton 
 	private static ConsumerDAOImpl instance;
-	private ConsumerDAOImpl () {}
+	public ConsumerDAOImpl () {}
 	public static ConsumerDAOImpl getInstance() {
 		if (instance == null)
 			instance = new ConsumerDAOImpl();
@@ -31,10 +32,26 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	}
 	public List<Consumer> getAllConsumers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Consumers");
+		Query q = em.createQuery("SELECT c FROM Consumer c");
 		List<Consumer> cs = q.getResultList();
+		System.out.println(cs.toString());
 		em.close();
 		return cs;
+	}
+	public Long getConsumerId(Consumer c) {
+		Long id = 0L;
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT c FROM Consumer c WHERE c.email= :email AND c.password= :password");
+		q.setParameter("email", c.getEmail());
+		q.setParameter("password", c.getPassword());
+		try{
+			Consumer cn = (Consumer) q.getSingleResult();
+			id = cn.getId();
+		}catch (NoResultException e){
+			System.out.println("This user does not exist");
+		}
+		em.close();
+		return id;
 	}
 	public void updateConsumer(Consumer c) {
 		EntityManager em = EMFService.get().createEntityManager();
@@ -43,7 +60,7 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 	}
 	public void deleteAllConsumers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("TRUNCATE TABLE Consumers").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Consumer").executeUpdate();
 		em.close();
 	}
 	public void deleteConsumerById(Long id) {

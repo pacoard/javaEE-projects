@@ -46,6 +46,7 @@ import java.util.List;
 		 * @return updated Driver
 		 */
 		public void updateDriver(Driver v);
+		public Long getDriverId(Driver d);
 		
 		/**
 		 *  Delete all method

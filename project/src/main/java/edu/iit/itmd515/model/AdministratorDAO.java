@@ -25,7 +25,7 @@ public interface AdministratorDAO {
 	 * 
 	 * @return List of Banned consumers
 	 */
-	
+	public Long getAdministratorId(Administrator a);
 	public List<Consumer> getBannedConsumers();
 	/**
 	 * Read method

@@ -2,6 +2,7 @@ package edu.iit.itmd515.model;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -14,7 +15,7 @@ public class DriverDAOImpl implements DriverDAO {
 	
 	// Singleton 
 	private static DriverDAOImpl instance;
-	private DriverDAOImpl () {}
+	public DriverDAOImpl () {}
 	public static DriverDAOImpl getInstance() {
 		if (instance == null)
 			instance = new DriverDAOImpl();
@@ -31,10 +32,25 @@ public class DriverDAOImpl implements DriverDAO {
 	}
 	public List<Driver> getAllDrivers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Drivers");
+		Query q = em.createQuery("SELECT d FROM Driver d");
 		List<Driver> ds = q.getResultList();
 		em.close();
 		return ds;
+	}
+	public Long getDriverId(Driver d) {
+		Long id = 0L;
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT d FROM Driver d WHERE d.email= :email AND d.password= :password");
+		q.setParameter("email", d.getEmail());
+		q.setParameter("password", d.getPassword());
+		try{
+			Driver dn = (Driver) q.getSingleResult();
+			id = dn.getId();
+		}catch (NoResultException e){
+			System.out.println("This user does not exist");
+		}
+		em.close();
+		return id;
 	}
 	public void updateDriver(Driver d) {
 		EntityManager em = EMFService.get().createEntityManager();
@@ -43,7 +59,7 @@ public class DriverDAOImpl implements DriverDAO {
 	}
 	public void deleteAllDrivers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("TRUNCATE TABLE Drivers").executeUpdate();
+		em.createQuery("TRUNCATE TABLE Driver").executeUpdate();
 		em.close();
 	}
 	public void deleteDriverById(Long id) {

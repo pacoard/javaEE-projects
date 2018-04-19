@@ -1,6 +1,7 @@
 package edu.iit.itmd515.model;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -13,7 +14,7 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 	
 	// Singleton 
 	private static AdministratorDAOImpl instance;
-	private AdministratorDAOImpl () {}
+	public AdministratorDAOImpl () {}
 	public static AdministratorDAOImpl getInstance() {
 		if (instance == null)
 			instance = new AdministratorDAOImpl();
@@ -28,9 +29,26 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 		return a;
 	}
 
+	public Long getAdministratorId(Administrator a) {
+		Long id = 0L;
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT a FROM Administrator a WHERE a.email= :email AND a.password= :password");
+		q.setParameter("email", a.getEmail());
+		q.setParameter("password", a.getPassword());
+		try{
+			Administrator ad = (Administrator) q.getSingleResult();
+			id = ad.getId();
+		}catch (NoResultException e){
+			System.out.println("This user does not exist");
+		}
+		em.close();
+		return id;
+	}
+	
 	public List<Consumer> getBannedConsumers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Consumers WHERE banned=1");
+		Query q = em.createQuery("SELECT c FROM Consumer c WHERE c.banned= :ban");
+		q.setParameter("ban", 1);
 		List<Consumer> cs = q.getResultList();
 		em.close();
 		return cs;
@@ -38,7 +56,8 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 
 	public List<Driver> getBannedDrivers() {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("SELECT * FROM Drivers WHERE suspended=1");
+		Query q = em.createQuery("SELECT d FROM Driver d WHERE d.suspended= :sus");
+		q.setParameter("sus", 1);
 		List<Driver> ds = q.getResultList();
 		em.close();
 		return ds;
@@ -46,26 +65,26 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 
 	public void deleteConsumer(Consumer consumer) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("UPDATE Consumers SET banned=0 WHERE id="+consumer.getId()).executeUpdate();
+		em.createQuery("UPDATE Consumer c SET banned=0 WHERE id="+consumer.getId()).executeUpdate();
 		em.close();
 	}
 
 	public void deleteDriver(Driver driver) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("UPDATE Drivers SET suspended=0 WHERE id="+driver.getId()).executeUpdate();
+		em.createQuery("UPDATE Driver d SET suspended=0 WHERE id="+driver.getId()).executeUpdate();
 		em.close();
 	}
 
 	public void banConsumer(Consumer consumer) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("UPDATE Consumer SET banned=1 WHERE id="+consumer.getId()).executeUpdate();
+		em.createQuery("UPDATE Consumer c SET banned=1 WHERE id="+consumer.getId()).executeUpdate();
 		em.close();
 		
 	}
 
 	public void suspendDriver(Driver driver) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.createQuery("UPDATE Drivers SET suspended=1 WHERE id="+driver.getId()).executeUpdate();
+		em.createQuery("UPDATE Driver d SET suspended=1 WHERE id="+driver.getId()).executeUpdate();
 		em.close();
 	}
 

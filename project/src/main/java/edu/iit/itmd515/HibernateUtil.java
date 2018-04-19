@@ -3,7 +3,9 @@ package edu.iit.itmd515;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import com.fasterxml.classmate.AnnotationConfiguration;
 
@@ -67,24 +69,23 @@ public class HibernateUtil {
 		}
 
 	}*/
-	
-    //private static final SessionFactory sessionFactory;
 	static Configuration con;
 	static SessionFactory sf;
 	static Session session;
-	
-    static {
-        try {
-			con = new Configuration().configure();
-			sf= con.buildSessionFactory();
-			
-			System.out.println("Session iniciated");
-        } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
+	static ServiceRegistry serviceRegistry;
+    //private static final SessionFactory sessionFactory;
+static{
+    try {
+		con = new Configuration().configure();
+    	serviceRegistry = new StandardServiceRegistryBuilder().applySettings(con.getProperties()).build();
+		sf= con.buildSessionFactory(serviceRegistry);
+		System.out.println("SESSION factory");
+
+    } catch (Throwable ex) {
+        System.err.println("Initial SessionFactory creation failed." + ex);
+        throw new ExceptionInInitializerError(ex);
     }
- 
+}
     public static Session openSession() {
         return session = sf.openSession();
     }

@@ -2,6 +2,7 @@ package edu.iit.itmd515;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
@@ -62,18 +63,44 @@ public class LoginSignupServlet extends HttpServlet {
 			System.out.println(role);
 			if (role.equals("Administrator")){
 				Administrator admin = new Administrator();
-				admin.setEmail(request.getParameter("email"));
-				admin.setPassword(request.getParameter("password"));
-				
+				String email = request.getParameter("email");
+				String password = request.getParameter("password");
+				admin.setEmail(email);
+				admin.setPassword(password);
 				result = register(admin); 
+			     if(result){
+			    	 //Setting session values
+			    	 request.getSession().setAttribute("role", "admin");   
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("admin.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}else if (role.equals("Driver")){
 				Driver driver = new Driver();
 				driver.setName(request.getParameter("name"));
 				driver.setEmail(request.getParameter("email"));
 				driver.setPhone(request.getParameter("phone"));
 				driver.setPassword(request.getParameter("password"));
-				
+				String email = request.getParameter("email");
+				String password = request.getParameter("password");
 				result = register(driver); 
+			     if(result){
+			    	 //Setting session values
+			    	 request.getSession().setAttribute("role", "driver");   
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("dispatch-ride.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}else if (role.equals("Consumer")){
 				Consumer consumer = new Consumer();
 				consumer.setName(request.getParameter("name"));
@@ -81,10 +108,23 @@ public class LoginSignupServlet extends HttpServlet {
 				consumer.setPhone(request.getParameter("phone"));
 				consumer.setCardNumber(request.getParameter("card_number"));
 				consumer.setPassword(request.getParameter("password"));
-				
+				String email = request.getParameter("email");
+				String password = request.getParameter("password");
 				result = register(consumer); 
+			     if(result){
+			    	 //Setting session values
+			    	 request.getSession().setAttribute("role", "consumer");   
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("request-ride.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}else{
-				//Pop up message
+				//Pop up message: You have to select a role!
 			}
 			
 		}else if (request.getParameter("login") != null){
@@ -93,34 +133,60 @@ public class LoginSignupServlet extends HttpServlet {
 		 	result = false;
 			if (role.equals("Administrator")){
 				Administrator admin = new Administrator();
-				admin.setEmail(request.getParameter("emailLI"));
-				admin.setPassword(request.getParameter("passwordLI"));
-				
+				String email = request.getParameter("emailLI");
+				String password = request.getParameter("passwordLI");
+				admin.setEmail(email);
+				admin.setPassword(password);
 				result = login(admin); 
+			     if(result){
+			    	 request.getSession().setAttribute("role", "admin");  
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("admin.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}else if (role.equals("Consumer")){
 				Consumer consumer = new Consumer();
-				consumer.setEmail(request.getParameter("emailLI"));
-				consumer.setPassword(request.getParameter("passwordLI"));
-				
+				String email = request.getParameter("emailLI");
+				String password = request.getParameter("passwordLI");
+				consumer.setEmail(email);
+				consumer.setPassword(password);
 				result = login(consumer); 
+			     if(result){
+			    	 request.getSession().setAttribute("role", "consumer");  
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("request-ride.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}else if (role.equals("Driver")){
 				Driver driver = new Driver();
-				driver.setEmail(request.getParameter("emailLI"));
-				driver.setPassword(request.getParameter("passwordLI"));
-				
+				String email = request.getParameter("emailLI");
+				String password = request.getParameter("passwordLI");
+				driver.setEmail(email);
+				driver.setPassword(password);
 				result = login(driver); 
+			     if(result){
+			    	 request.getSession().setAttribute("role", "driver");
+			    	 request.getSession().setAttribute("email", email);
+			    	 request.getSession().setAttribute("password", password);
+			    	 response.sendRedirect("dispatch-ride.jsp");
+			    	 System.out.println("Login/Registration correct!");
+			     }
+			     else{
+			    	 response.sendRedirect("login-signup.jsp");
+			    	 System.out.println("Login/Registration error!");
+			     }
 			}
 		}
-	     if(result == true){
-	         //request.getSession().setAttribute("user", user);      
-	    	 response.sendRedirect("welcome.jsp");
-	    	 System.out.println("Login/Registration correct!");
-	     }
-	     else{
-	    	 response.sendRedirect("login-signup.jsp");
-	    	 System.out.println("Login/Registration error!");
-	     }
-		//doGet(request,response);
 	}
 	
 	
@@ -148,7 +214,6 @@ public class LoginSignupServlet extends HttpServlet {
 	
 	public boolean login(Object user){
 	     Session session = HibernateUtil.openSession();
-	     System.out.println("Session init for login");
 	     Transaction tx = null;
 	     Long id = 0L;
 	     try {
@@ -157,15 +222,12 @@ public class LoginSignupServlet extends HttpServlet {
 	         if (user instanceof Consumer){
 	        	 ConsumerDAO c = new ConsumerDAOImpl();
 	        	 id = c.getConsumerId((Consumer)user);
-	        	 System.out.println("El id del user es "+id);
 	         }else if (user instanceof Driver){
 	        	 DriverDAO c = new DriverDAOImpl();
-	        	 //id = c.getDriverId((Driver)user);
-	        	 System.out.println("El id del user es "+id);
+	        	 id = c.getDriverId((Driver)user);
 	         }else if (user instanceof Administrator){
 	        	 AdministratorDAO c = new AdministratorDAOImpl();
-	        	 //id = c.getAdministratorId((Administrator)user);
-	        	 System.out.println("El id del user es "+id);
+	        	 id = c.getAdministratorId((Administrator)user);
 	         }
 	         tx.commit();
 	     } catch (Exception e) {

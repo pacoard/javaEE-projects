@@ -31,18 +31,18 @@
                                     <h4 class="title">Profile</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="/login-signup/signup" method="post">
+                                    <form action="/profile" method="post">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" value="Mike">
+                                                    <input type="text" class="form-control" value='<%=request.getAttribute("name")%>' >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" value="mike@mike.mike">
+                                                    <input type="text" class="form-control" value='<%=request.getAttribute("email")%>'>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,13 +51,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Phone</label>
-                                                    <input type="text" class="form-control" value="12346789">
+                                                    <input type="text" class="form-control" value='<%=request.getAttribute("phone")%>'>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Card Number</label>
-                                                    <input type="text" class="form-control" value="1111-2222-3333-4444">
+                                                    <input type="text" class="form-control" value='<%=request.getAttribute("cardNumber")%>'>
                                                 </div>
                                             </div>
                                             
@@ -67,13 +67,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>New password</label>
-                                                    <input type="password" class="form-control" value="pass">
+                                                    <input type="password" class="form-control" name="newPassword" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Repeat new password</label>
-                                                    <input type="password" class="form-control" value="pass">
+                                                    <input type="password" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>

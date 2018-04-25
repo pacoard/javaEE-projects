@@ -63,6 +63,12 @@ public class ConsumerDAOImpl implements ConsumerDAO {
 		em.createQuery("TRUNCATE TABLE Consumer").executeUpdate();
 		em.close();
 	}
+	public Object getConsumerById(Long id) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Consumer c = em.find(Consumer.class, id);
+		em.close();
+		return c;
+	}
 	public void deleteConsumerById(Long id) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Consumer c = em.find(Consumer.class, id);

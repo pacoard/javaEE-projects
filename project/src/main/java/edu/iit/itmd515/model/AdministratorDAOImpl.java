@@ -82,6 +82,13 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 		
 	}
 
+	public Object getAdministratorById(Long id) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Administrator a = em.find(Administrator.class, id);
+		em.close();
+		return a;
+	}
+	
 	public void suspendDriver(Driver driver) {
 		EntityManager em = EMFService.get().createEntityManager();
 		em.createQuery("UPDATE Driver d SET suspended=1 WHERE id="+driver.getId()).executeUpdate();

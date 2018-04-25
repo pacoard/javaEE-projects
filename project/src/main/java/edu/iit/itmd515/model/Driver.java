@@ -33,6 +33,7 @@ public class Driver implements java.io.Serializable {
 	//Every driver will drive a car, so we need to link that reference
 	@OneToOne
 	private Car car;
+	@Column(unique = true)
 	private String email;
 	private String password;
 	private String name;

@@ -57,6 +57,8 @@ public interface ConsumerDAO {
 	 * 
 	 * @param id
 	 */
+	
+	public Object getConsumerById(Long id) ;
 	public void deleteConsumerById(Long id);
 
 }

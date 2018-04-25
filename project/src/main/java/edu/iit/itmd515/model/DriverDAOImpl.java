@@ -62,6 +62,12 @@ public class DriverDAOImpl implements DriverDAO {
 		em.createQuery("TRUNCATE TABLE Driver").executeUpdate();
 		em.close();
 	}
+	public Object getDriverById(Long id) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Driver d = em.find(Driver.class, id);
+		em.close();
+		return d;
+	}
 	public void deleteDriverById(Long id) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Driver d = em.find(Driver.class, id);

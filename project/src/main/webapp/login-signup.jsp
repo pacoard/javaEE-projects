@@ -6,7 +6,9 @@
 
 <!doctype html>
 <html lang="en">
-
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+     content="----- your google client id here -----------">
 <%@include  file="head.html" %>
 
 <body>
@@ -146,7 +148,6 @@
 
         <%@include  file="footer.html" %>
 
-
     </div>
 </div>
 
@@ -162,6 +163,9 @@
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
+	
+	<!-- Google API autorization -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	
 
 </html>

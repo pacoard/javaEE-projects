@@ -9,9 +9,15 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.fasterxml.classmate.AnnotationConfiguration;
 
-import edu.iit.itmd515.model.Car;
+import edu.iit.itmd515.model.Administrator;
+import edu.iit.itmd515.model.AdministratorDAO;
+import edu.iit.itmd515.model.AdministratorDAOImpl;
+import edu.iit.itmd515.model.Consumer;
+import edu.iit.itmd515.model.ConsumerDAO;
+import edu.iit.itmd515.model.ConsumerDAOImpl;
 import edu.iit.itmd515.model.Driver;
-
+import edu.iit.itmd515.model.DriverDAO;
+import edu.iit.itmd515.model.DriverDAOImpl;
 /**
  * Java Bean class for managing hibernate sessions and change the DB content
  * 
@@ -77,8 +83,9 @@ public class HibernateUtil {
 static{
     try {
 		con = new Configuration().configure();
-    	serviceRegistry = new StandardServiceRegistryBuilder().applySettings(con.getProperties()).build();
-		sf= con.buildSessionFactory(serviceRegistry);
+    	//serviceRegistry = new StandardServiceRegistryBuilder().applySettings(con.getProperties()).build();
+		//sf= con.buildSessionFactory(serviceRegistry);
+		sf = new Configuration().configure().buildSessionFactory();
 		System.out.println("SESSION factory");
 
     } catch (Throwable ex) {

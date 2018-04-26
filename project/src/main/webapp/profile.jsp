@@ -60,7 +60,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Card Number</label>
-                                                    <input type="text" class="form-control" name="cardNum" value='<%=request.getAttribute("cardNumber")%>'>
+                                                    <input type="text" class="form-control" name="cardNumber" value='<%=request.getAttribute("cardNumber")%>'>
                                                 </div>
                                             </div>
                                             

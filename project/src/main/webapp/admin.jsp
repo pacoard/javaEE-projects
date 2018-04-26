@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@page import="edu.iit.itmd515.model.Consumer"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 
@@ -41,7 +43,23 @@
                                         </thead>
                                         <tbody>
                                             <!-- For loop to inyect values -->
-                                            <tr>
+													<%
+													  List<Consumer> consumers= (List<Consumer>)request.getAttribute("consumers"); 
+													  if(consumers != null){	  
+													for (Consumer cons: consumers) {   
+													%>
+													  <tr>
+													    <td><%=cons.getName()%></td>
+													    <td>5</td>
+                                                		<td>
+		                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
+		                                                        href="/admin/ban/ID">
+		                                                        <i class="fa fa-ban"></i>
+		                                                    </a>
+                                               			</td>
+                                               		</tr>
+													<%}}%>
+		                                        <tr>
                                                 <td>Mike</td>
                                                 <td>5</td>
                                                 <td>
@@ -99,6 +117,10 @@
 
 
 </body>
+	<script> 
+	$( "btn btn-simple btn-danger btn-icon remove" ).click(function() {
+	    alert( "Clicked" );
+	}); </script>
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

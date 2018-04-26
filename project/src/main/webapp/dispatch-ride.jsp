@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@page import="edu.iit.itmd515.model.Request"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 
@@ -25,7 +27,43 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
+<div class="col-md-6">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Ban drivers</h4>
+                                </div>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Distance</th>
+                                                <th>Price</th>
+                                                <th>Accept</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- For loop to inyect values -->
+													<% 
+													  List<Request> requests= (List<Request>)request.getAttribute("consumers"); 
+													if(requests != null){  
+													for (Request req: requests) {   
+													%>
+													  <tr>
+													    <td><%=req.getDistance()%></td>
+													    <td><%=req.getPrice()%></td>
+                                                		<td>
+		                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
+		                                                        href="/admin/ban/ID">
+		                                                        <i class="fa fa-ban"></i>
+		                                                    </a>
+                                               			</td>
+                                               		</tr>
+													<%}}%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>

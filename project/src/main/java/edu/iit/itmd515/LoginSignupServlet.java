@@ -46,6 +46,7 @@ import org.hibernate.Transaction;
 public class LoginSignupServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+    private Long id = 0L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		req.getSession().setAttribute("content", "login-signup");
@@ -71,6 +72,7 @@ public class LoginSignupServlet extends HttpServlet {
 				result = register(admin); 
 			     if(result){
 			    	 //Setting session values
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("role", "admin");   
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
@@ -94,6 +96,7 @@ public class LoginSignupServlet extends HttpServlet {
 				result = register(driver); 
 			     if(result){
 			    	 //Setting session values
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("role", "driver");   
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
@@ -118,7 +121,8 @@ public class LoginSignupServlet extends HttpServlet {
 				result = register(consumer); 
 			     if(result){
 			    	 //Setting session values
-			    	 request.getSession().setAttribute("role", "consumer");   
+			    	 request.getSession().setAttribute("role", "consumer"); 
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
 			    	 response.sendRedirect("request-ride.jsp");
@@ -149,7 +153,8 @@ public class LoginSignupServlet extends HttpServlet {
 				admin.setPassword(password);
 				result = login(admin); 
 			     if(result){
-			    	 request.getSession().setAttribute("role", "admin");  
+			    	 request.getSession().setAttribute("role", "admin");
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
 			    	 response.sendRedirect("admin.jsp");
@@ -170,6 +175,7 @@ public class LoginSignupServlet extends HttpServlet {
 				result = login(consumer); 
 			     if(result){
 			    	 request.getSession().setAttribute("role", "consumer");  
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
 			    	 response.sendRedirect("request-ride.jsp");
@@ -218,7 +224,7 @@ public class LoginSignupServlet extends HttpServlet {
 	     try {
 	         tx = session.getTransaction();
 	         tx.begin();
-	         session.save(user);
+	         id = (Long)session.save(user);
 	         System.out.println("Saved user:" + user.toString());
 	         tx.commit();
 	     } catch (Exception e) {
@@ -236,7 +242,6 @@ public class LoginSignupServlet extends HttpServlet {
 	public boolean login(Object user){
 	     Session session = HibernateUtil.openSession();
 	     Transaction tx = null;
-	     Long id = 0L;
 	     try {
 	         tx = session.getTransaction();
 	         tx.begin();

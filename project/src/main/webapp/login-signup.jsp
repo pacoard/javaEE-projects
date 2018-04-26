@@ -31,6 +31,9 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">New member? Sign Up</h4>
+                                    <%if (session.getAttribute("notification_msg") != null) { %>
+                                    	<p style="color:red;"><%=session.getAttribute("notification_msg")%></p>
+					                <% } %>
                                 </div>
                                 <div class="content">
                                     <form action="/login-signup" method="post">
@@ -102,6 +105,9 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Already a member? Log In</h4>
+                                    <%if (session.getAttribute("notification_msg") != null) { %>
+                                    	<p style="color:red;"><%=session.getAttribute("notification_msg")%></p>
+					                <% } %>
                                 </div>
                                 <div class="content">
                                     <form action="/login-signup" method="post">
@@ -151,9 +157,7 @@
     </div>
 </div>
 
-
 </body>
-
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>

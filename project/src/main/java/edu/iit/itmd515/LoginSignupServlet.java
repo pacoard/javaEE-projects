@@ -2,6 +2,7 @@ package edu.iit.itmd515;
 
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -77,7 +78,9 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "The parameters introduced are not correct");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
 			}else if (role.equals("Driver")){
@@ -98,7 +101,9 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "The parameters introduced are not correct");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
 			}else if (role.equals("Consumer")){
@@ -120,11 +125,16 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "The parameters introduced are not correct");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
 			}else{
-				//Pop up message: You have to select a role!
+				 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+				 request.getSession().setAttribute("notification_msg", "You have to select a role");
+				 view.forward(request,response);
+		    	 System.out.println("Login/Registration error!");
 			}
 			
 		}else if (request.getParameter("login") != null){
@@ -146,7 +156,9 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "Login incorrect");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
 			}else if (role.equals("Consumer")){
@@ -164,7 +176,9 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "Login incorrect");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
 			}else if (role.equals("Driver")){
@@ -181,10 +195,17 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 response.sendRedirect("dispatch-ride.jsp");
 			    	 System.out.println("Login/Registration correct!");
 			     }
-			     else{
-			    	 response.sendRedirect("login-signup.jsp");
+			     else{ 
+					 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+					 request.getSession().setAttribute("notification_msg", "Login incorrect");
+					 view.forward(request,response);
 			    	 System.out.println("Login/Registration error!");
 			     }
+			}else{
+				 RequestDispatcher view = request.getRequestDispatcher("login-signup.jsp");
+				 request.getSession().setAttribute("notification_msg", "You have to select a role");
+				 view.forward(request,response);
+		    	 System.out.println("Login/Registration error!");
 			}
 		}
 	}

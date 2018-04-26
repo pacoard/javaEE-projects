@@ -29,6 +29,9 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Profile</h4>
+                                    <% if (session.getAttribute("notification_msg") != null) { %>
+					                     <p style="color:red;">${error_message}</p>
+					                <% } %>
                                 </div>
                                 <div class="content">
                                     <form action="/profile" method="post">

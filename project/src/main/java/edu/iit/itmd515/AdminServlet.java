@@ -32,9 +32,18 @@ public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		req.getSession().setAttribute("content", "admin");
-		RequestDispatcher view = req.getRequestDispatcher("admin.jsp");
-		view.forward(req,res);
+		
+		
+		if (req.getSession().getAttribute("role") != "Administrator") {
+			req.getSession().setAttribute("content", "");
+			RequestDispatcher view = req.getRequestDispatcher("forbidden.jsp");
+			view.forward(req,res);
+		} else {
+			req.getSession().setAttribute("content", "admin");
+			RequestDispatcher view = req.getRequestDispatcher("admin.jsp");
+			view.forward(req,res);
+		}
+		
 	}
 	
 	/**

@@ -32,9 +32,16 @@ public class DispatchRideServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		req.getSession().setAttribute("content", "dispatch-ride");
-		RequestDispatcher view = req.getRequestDispatcher("dispatch-ride.jsp");
-		view.forward(req,res);
+		if (req.getSession().getAttribute("role") != "Driver") {
+			req.getSession().setAttribute("content", "");
+			RequestDispatcher view = req.getRequestDispatcher("forbidden.jsp");
+			view.forward(req,res);
+		} else {
+			req.getSession().setAttribute("content", "dispatch-ride");
+			RequestDispatcher view = req.getRequestDispatcher("dispatch-ride.jsp");
+			view.forward(req,res);
+		}
+		
 	}
 	
 	/**

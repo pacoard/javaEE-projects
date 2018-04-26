@@ -96,11 +96,9 @@ public class ProfileServlet extends HttpServlet {
 			Consumer c = new Consumer();
 			c.setEmail(email);
 			c.setPassword(password);
-			System.out.println("New password introduced:" + request.getParameter("newPassword"));
 			changeData(c,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			System.out.println("Password changed");
 		}else if(role.equals("driver")){
 			Driver d = new Driver();
 			d.setEmail(email);

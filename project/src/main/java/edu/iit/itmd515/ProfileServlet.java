@@ -53,32 +53,37 @@ public class ProfileServlet extends HttpServlet {
 	
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		req.getSession().setAttribute("content", "profile");
-		role = (String) req.getSession().getAttribute("role");
-		password = (String) req.getSession().getAttribute("password");
-		if (role.equals("admin")){
-			Administrator a = new Administrator();
-			a.setEmail((String)req.getSession().getAttribute("email"));
-			a.setPassword((String)req.getSession().getAttribute("password"));
-			getData(a);
-		}else if(role.equals("consumer")){
-			Consumer c = new Consumer();
-			c.setEmail((String)req.getSession().getAttribute("email"));
-			c.setPassword((String)req.getSession().getAttribute("password"));
-			getData(c);
-		}else if(role.equals("driver")){
-			Driver d = new Driver();
-			d.setEmail((String)req.getSession().getAttribute("email"));
-			d.setPassword((String)req.getSession().getAttribute("password"));
-			getData(d);
+		if ((String) req.getSession().getAttribute("role") != null){
+			req.getSession().setAttribute("content", "profile");
+			role = (String) req.getSession().getAttribute("role");
+			password = (String) req.getSession().getAttribute("password");
+			if (role.equals("admin")){
+				Administrator a = new Administrator();
+				a.setEmail((String)req.getSession().getAttribute("email"));
+				a.setPassword((String)req.getSession().getAttribute("password"));
+				getData(a);
+			}else if(role.equals("consumer")){
+				Consumer c = new Consumer();
+				c.setEmail((String)req.getSession().getAttribute("email"));
+				c.setPassword((String)req.getSession().getAttribute("password"));
+				getData(c);
+			}else if(role.equals("driver")){
+				Driver d = new Driver();
+				d.setEmail((String)req.getSession().getAttribute("email"));
+				d.setPassword((String)req.getSession().getAttribute("password"));
+				getData(d);
+			}
+			RequestDispatcher view = req.getRequestDispatcher("profile.jsp");
+			req.setAttribute("name", name);
+			req.setAttribute("email", email);
+			req.setAttribute("phone", phone);
+			req.setAttribute("password", password);
+			req.setAttribute("cardNumber", cardNum);
+			view.forward(req,res);
+		}else{
+			RequestDispatcher view = req.getRequestDispatcher("profile.jsp");
+			view.forward(req,res);
 		}
-		RequestDispatcher view = req.getRequestDispatcher("profile.jsp");
-		req.setAttribute("name", name);
-		req.setAttribute("email", email);
-		req.setAttribute("phone", phone);
-		req.setAttribute("password", password);
-		req.setAttribute("cardNumber", cardNum);
-		view.forward(req,res);
 	}
 	
 	/**
@@ -92,7 +97,7 @@ public class ProfileServlet extends HttpServlet {
 			changeData(a,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
 			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
 			view.forward(request,response);
 
@@ -103,7 +108,7 @@ public class ProfileServlet extends HttpServlet {
 			changeData(c,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
 			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
 			view.forward(request,response);
 		}else if(role.equals("driver")){
@@ -113,11 +118,10 @@ public class ProfileServlet extends HttpServlet {
 			changeData(d,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
 			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
 			view.forward(request,response);
 		}
-		response.sendRedirect("login-signup.jsp");
 	}
 	
 	public void changeData(Object u,String name, String email, String phone, String cardNum, String newPass){

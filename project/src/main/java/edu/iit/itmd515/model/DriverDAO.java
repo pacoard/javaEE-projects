@@ -31,7 +31,7 @@ import java.util.List;
 		 * @return List of Driver
 		 */
 		public List<Driver> getAllDrivers();
-		
+		public List<Request> getAllRequests();
 		/**
 		 * Update method
 		 * 

@@ -26,7 +26,7 @@ public class RequestDAOImpl implements RequestDAO{
 		return instance;
 	}
 	
-	public Request createRequest(Long id,String origin, String destination, double price, double distance, String type) {
+	public Request createRequest(Long id,String origin, String destination, String price, String distance, String type) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Request r = new Request(id,origin, destination, price,distance,type);
 		em.persist(r);

@@ -37,6 +37,13 @@ public class DriverDAOImpl implements DriverDAO {
 		em.close();
 		return ds;
 	}
+	public List<Request> getAllRequests() {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT r FROM Request r");
+		List<Request> rs = q.getResultList();
+		em.close();
+		return rs;
+	}
 	public Long getDriverId(Driver d) {
 		Long id = 0L;
 		EntityManager em = EMFService.get().createEntityManager();

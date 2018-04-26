@@ -29,6 +29,22 @@ public class AdministratorDAOImpl implements AdministratorDAO{
 		return a;
 	}
 
+	public List<Driver> getAllDrivers() {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT d FROM Driver d");
+		List<Driver> ds = q.getResultList();
+		em.close();
+		return ds;
+	}
+	
+	public List<Consumer> getAllConsumers() {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT c FROM Consumer c");
+		List<Consumer> cs = q.getResultList();
+		em.close();
+		return cs;
+	}
+	
 	public Long getAdministratorId(Administrator a) {
 		Long id = 0L;
 		EntityManager em = EMFService.get().createEntityManager();

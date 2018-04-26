@@ -28,6 +28,9 @@ public interface AdministratorDAO {
 	public Long getAdministratorId(Administrator a);
 	public Object getAdministratorById(Long id);
 	public List<Consumer> getBannedConsumers();
+	public List<Consumer> getAllConsumers();
+	public List<Driver> getAllDrivers();
+	
 	/**
 	 * Read method
 	 * 

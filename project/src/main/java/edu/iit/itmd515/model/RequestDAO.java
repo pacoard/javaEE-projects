@@ -20,7 +20,7 @@ public interface RequestDAO {
 	 * @param requestType
 	 * @return created Request
 	 */
-	public Request createRequest(Long id,String origin, String destination, double price, double distance, String type);
+	public Request createRequest(Long id,String origin, String destination, String price, String distance, String type);
 	
 	/**
 	 * Read method

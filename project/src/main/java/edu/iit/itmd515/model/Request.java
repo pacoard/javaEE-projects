@@ -30,8 +30,8 @@ public class Request {
 	private Consumer consumer;
 	private String origin;
 	private String destination;
-	private double price;
-	private double distance;
+	private String price;
+	private String distance;
 	private String type;
 	
 	// Constructor (cannot have parameters)
@@ -45,7 +45,7 @@ public class Request {
 	 * @param time
 	 * @param type
 	 */
-	public Request(Long id,String origin, String destination, double price, double distance, String type) {
+	public Request(Long id,String origin, String destination, String price, String distance, String type) {
 		super();
 		this.id = id;
 		this.origin = origin;
@@ -108,28 +108,28 @@ public class Request {
 	/**
 	 * @return the price
 	 */
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
 	/**
 	 * @return the distance
 	 */
-	public double getDistance() {
+	public String getDistance() {
 		return distance;
 	}
 
 	/**
 	 * @param distance the distance to set
 	 */
-	public void setDistance(double distance) {
+	public void setDistance(String distance) {
 		this.distance = distance;
 	}
 

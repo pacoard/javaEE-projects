@@ -92,6 +92,10 @@ public class ProfileServlet extends HttpServlet {
 			changeData(a,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+			view.forward(request,response);
+
 		}else if(role.equals("consumer")){
 			Consumer c = new Consumer();
 			c.setEmail(email);
@@ -99,14 +103,19 @@ public class ProfileServlet extends HttpServlet {
 			changeData(c,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+			view.forward(request,response);
 		}else if(role.equals("driver")){
 			Driver d = new Driver();
 			d.setEmail(email);
 			d.setPassword(password);
-			request.getSession().setAttribute("email", (String)request.getParameter("email"));
-			System.out.println("New password introduced:" + request.getParameter("newPassword"));
 			changeData(d,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("notification_msg", "Profile changed successfully");
+			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+			view.forward(request,response);
 		}
 		response.sendRedirect("login-signup.jsp");
 	}

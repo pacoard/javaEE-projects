@@ -32,7 +32,7 @@ public class DispatchRideServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		if (req.getSession().getAttribute("role") != "Driver") {
+		if (req.getSession().getAttribute("role") != "driver") {
 			req.getSession().setAttribute("content", "");
 			RequestDispatcher view = req.getRequestDispatcher("forbidden.jsp");
 			view.forward(req,res);

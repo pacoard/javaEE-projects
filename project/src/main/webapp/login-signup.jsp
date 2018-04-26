@@ -31,7 +31,7 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">New member? Sign Up</h4>
-                                    <%if (session.getAttribute("notification_msg") != null) { %>
+                                    <%if (session.getAttribute("notification_msg") != null && session.getAttribute("notification_msg").equals("The parameters introduced are not correct")) { %>
                                     	<p style="color:red;"><%=session.getAttribute("notification_msg")%></p>
 					                <% } %>
                                 </div>
@@ -105,7 +105,7 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Already a member? Log In</h4>
-                                    <%if (session.getAttribute("notification_msg") != null) { %>
+                                    <%if (session.getAttribute("notification_msg") != null && session.getAttribute("notification_msg").equals("Login incorrect")) { %>
                                     	<p style="color:red;"><%=session.getAttribute("notification_msg")%></p>
 					                <% } %>
                                 </div>

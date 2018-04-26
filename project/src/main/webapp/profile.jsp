@@ -39,13 +39,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" value='<%=request.getAttribute("name")%>' >
+                                                    <input type="text" class="form-control" name="name" value='<%=request.getAttribute("name")%>' >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" value='<%=request.getAttribute("email")%>'>
+                                                    <input type="text" class="form-control" name="email" value='<%=request.getAttribute("email")%>'>
                                                 </div>
                                             </div>
                                         </div>
@@ -54,13 +54,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Phone</label>
-                                                    <input type="text" class="form-control" value='<%=request.getAttribute("phone")%>'>
+                                                    <input type="text" class="form-control" name="phone" value='<%=request.getAttribute("phone")%>'>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Card Number</label>
-                                                    <input type="text" class="form-control" value='<%=request.getAttribute("cardNumber")%>'>
+                                                    <input type="text" class="form-control" name="cardNum" value='<%=request.getAttribute("cardNumber")%>'>
                                                 </div>
                                             </div>
                                             

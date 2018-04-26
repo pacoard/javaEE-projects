@@ -29,8 +29,11 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Enter the details of your ride</h4>
-                                    <% if (session.getAttribute("error_message") != null) { %>
-					                     <p style="color:red;">${error_message}</p>
+                                    <%if (session.getAttribute("error_message") != null) { %>
+                                    	<p style="color:red;"><%=session.getAttribute("error_message")%></p>
+					                <% } %>
+					                <%if (session.getAttribute("ok_message") != null) { %>
+                                    	<p style="color:green;"><%=session.getAttribute("ok_message")%></p>
 					                <% } %>
                                 </div>
                                 <div class="content">

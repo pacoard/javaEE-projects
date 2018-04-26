@@ -90,38 +90,42 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		name= request.getParameter("name");
+		email= request.getParameter("email");
+		phone= request.getParameter("phone");
+		cardNum= request.getParameter("cardNumber");
+		password= request.getParameter("newPassword");
 		if (role.equals("admin")){
 			Administrator a = new Administrator();
 			a.setEmail(email);
 			a.setPassword(password);
-			changeData(a,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("email", (String)request.getParameter("email"));
-			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
-			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
-			view.forward(request,response);
-
+			changeData(a,name, email, phone, cardNum,password);
 		}else if(role.equals("consumer")){
 			Consumer c = new Consumer();
 			c.setEmail(email);
 			c.setPassword(password);
-			changeData(c,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
+			changeData(c,name, email, phone, cardNum,password);
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
-			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
-			view.forward(request,response);
 		}else if(role.equals("driver")){
 			Driver d = new Driver();
 			d.setEmail(email);
 			d.setPassword(password);
-			changeData(d,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
+			changeData(d,name, email, phone, cardNum,password);
 			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
-			request.getSession().setAttribute("notification_msg", "Changes saved successfully");
-			RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
-			view.forward(request,response);
 		}
+		request.getSession().setAttribute("email", email);
+		request.getSession().setAttribute("password", password);
+		request.getSession().setAttribute("notification_msg", "Changes saved successfully");
+		request.setAttribute("name", name);
+		request.setAttribute("email", email);
+		request.setAttribute("phone", phone);
+		request.setAttribute("password", password);
+		request.setAttribute("cardNumber", cardNum);
+		RequestDispatcher view = request.getRequestDispatcher("profile.jsp");
+		view.forward(request,response);
+
 	}
 	
 	public void changeData(Object u,String name, String email, String phone, String cardNum, String newPass){

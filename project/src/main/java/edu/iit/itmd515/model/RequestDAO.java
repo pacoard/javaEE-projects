@@ -20,7 +20,7 @@ public interface RequestDAO {
 	 * @param requestType
 	 * @return created Request
 	 */
-	public Request createRequest(Long id,String location, String requestTime, String requestType);
+	public Request createRequest(Long id,String origin, String destination, double price, double distance, String type);
 	
 	/**
 	 * Read method
@@ -50,4 +50,5 @@ public interface RequestDAO {
 	 * @param id
 	 */
 	public void deleteRequestsById(Long id);
+	public Object getRequestByid(Long id);
 }

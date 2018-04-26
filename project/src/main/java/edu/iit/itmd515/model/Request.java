@@ -28,8 +28,10 @@ public class Request {
 	private Long id;
 	@OneToOne
 	private Consumer consumer;
-	private String Location;
-	private String time;
+	private String origin;
+	private String destination;
+	private double price;
+	private double distance;
 	private String type;
 	
 	// Constructor (cannot have parameters)
@@ -43,11 +45,13 @@ public class Request {
 	 * @param time
 	 * @param type
 	 */
-	public Request(Long id,String location, String time, String type) {
+	public Request(Long id,String origin, String destination, double price, double distance, String type) {
 		super();
 		this.id = id;
-		Location = location;
-		this.time = time;
+		this.origin = origin;
+		this.destination = destination;
+		this.price = price;
+		this.distance = distance;
 		this.type = type;
 	}
 
@@ -57,14 +61,6 @@ public class Request {
 	 */
 	public Long getId() {
 		return id;
-	}
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	/**
@@ -82,36 +78,60 @@ public class Request {
 	}
 
 	/**
-	 * @return the location
+	 * @return the origin
 	 */
-	public String getLocation() {
-		return Location;
+	public String getOrigin() {
+		return origin;
 	}
-
 
 	/**
-	 * @param location the location to set
+	 * @param origin the origin to set
 	 */
-	public void setLocation(String location) {
-		Location = location;
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
-
 
 	/**
-	 * @return the time
+	 * @return the destination
 	 */
-	public String getTime() {
-		return time;
+	public String getDestination() {
+		return destination;
 	}
-
 
 	/**
-	 * @param time the time to set
+	 * @param destination the destination to set
 	 */
-	public void setTime(String time) {
-		this.time = time;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
+	/**
+	 * @return the price
+	 */
+	public double getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	/**
+	 * @return the distance
+	 */
+	public double getDistance() {
+		return distance;
+	}
+
+	/**
+	 * @param distance the distance to set
+	 */
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 
 	/**
 	 * @return the type
@@ -120,7 +140,6 @@ public class Request {
 		return type;
 	}
 
-
 	/**
 	 * @param type the type to set
 	 */
@@ -128,14 +147,22 @@ public class Request {
 		this.type = type;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Request [id=" + id + ", Location=" + Location + ", time=" + time
-				+ ", type=" + type + "]";
+		return "Request [id=" + id + ", consumer=" + consumer + ", origin=" + origin + ", destination=" + destination
+				+ ", price=" + price + ", distance=" + distance + ", type=" + type + "]";
 	}
+
+
 	
 }

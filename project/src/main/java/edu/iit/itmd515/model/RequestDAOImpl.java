@@ -26,9 +26,9 @@ public class RequestDAOImpl implements RequestDAO{
 		return instance;
 	}
 	
-	public Request createRequest(Long id,String location, String requestTime, String requestType) {
+	public Request createRequest(Long id,String origin, String destination, double price, double distance, String type) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Request r = new Request(id,location, requestTime, requestType);
+		Request r = new Request(id,origin, destination, price,distance,type);
 		em.persist(r);
 		em.close();
 		return r;
@@ -39,6 +39,12 @@ public class RequestDAOImpl implements RequestDAO{
 		List<Request> rs = q.getResultList();
 		em.close();
 		return rs;
+	}
+	public Object getRequestByid(Long id) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Consumer c = em.find(Consumer.class, id);
+		em.close();
+		return c;
 	}
 
 	public void updateRequest(Request r) {

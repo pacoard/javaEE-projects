@@ -6,8 +6,20 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.json.JSONObject;
 
+import edu.iit.itmd515.model.Administrator;
+import edu.iit.itmd515.model.AdministratorDAO;
+import edu.iit.itmd515.model.AdministratorDAOImpl;
+import edu.iit.itmd515.model.Consumer;
+import edu.iit.itmd515.model.ConsumerDAO;
+import edu.iit.itmd515.model.ConsumerDAOImpl;
+import edu.iit.itmd515.model.Driver;
+import edu.iit.itmd515.model.DriverDAO;
+import edu.iit.itmd515.model.DriverDAOImpl;
 import edu.iit.itmd515.model.Request;
 
 import javax.servlet.RequestDispatcher;
@@ -32,13 +44,21 @@ import geo.google.datamodel.GeoUsAddress;
 public class RequestRideServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private Long idR = 0L;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		req.getSession().setAttribute("content", "request-ride");
-		req.getSession().setAttribute("error_message", "");
-		RequestDispatcher view = req.getRequestDispatcher("request-ride.jsp");
-		view.forward(req,res);
+		if (req.getSession().getAttribute("role") != "consumer") {
+			req.getSession().setAttribute("content", "");
+			RequestDispatcher view = req.getRequestDispatcher("forbidden.jsp");
+			view.forward(req,res);
+		} else {
+			req.getSession().setAttribute("content", "request-ride");
+			RequestDispatcher view = req.getRequestDispatcher("request-ride.jsp");
+			view.forward(req,res);
+		}
+		
 	}
+
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -72,10 +92,37 @@ public class RequestRideServlet extends HttpServlet {
 		int cost = 2; // base fare
 		cost += distance/1000 * 2; // add $2 per km
 		
-	
+		Request r = new Request();
+		r.setOrigin(origin);
+		r.setDestination(destination);
+		r.setDistance(distance);
+		r.setPrice(cost);
+		r.setType(reqType);
+		saveRequest(r);
 		RequestDispatcher view = req.getRequestDispatcher("request-ride.jsp");
 		view.forward(req,res);
 		
+	}
+	
+	public boolean saveRequest(Request r){
+	     Session session = HibernateUtil.openSession();
+	     Transaction tx = null;
+	     try {
+	         tx = session.getTransaction();
+	         tx.begin();
+	         session.save(r);
+	         System.out.println("Saved request:" + r.toString());
+	         tx.commit();
+	     } catch (Exception e) {
+	         if (tx != null) {
+	             tx.rollback();
+	         }
+	         e.printStackTrace();
+	         return false;
+	     } finally {
+	         session.close();
+	     } 
+	     return true;
 	}
 	
 	private void returnError(String errorMsg, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

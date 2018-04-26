@@ -124,7 +124,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" name="passwordLI" class="form-control" value="pass">
+                                                    <input type="password" name="passwordLI" class="form-control">
                                                 </div>
                                             </div>
                                         </div>

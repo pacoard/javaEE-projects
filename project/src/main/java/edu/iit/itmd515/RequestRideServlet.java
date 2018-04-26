@@ -100,6 +100,7 @@ public class RequestRideServlet extends HttpServlet {
 		r.setType(reqType);
 		saveRequest(r);
 		RequestDispatcher view = req.getRequestDispatcher("request-ride.jsp");
+		req.getSession().setAttribute("ok_message", "Changes saved successfully.The distance is: "+ distance/1000 + "km and the cost is: "+ cost + "$");
 		view.forward(req,res);
 		
 	}

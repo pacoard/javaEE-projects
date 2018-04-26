@@ -26,7 +26,30 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
+					<div class="col-md-12">
+						<div class="card">
+							<div class="header">
+								<h2 style="text-align:center;">U-MOVE-IT</h2>
+	                            <h3 class="title">ITMD 515 Advanced Software Programming</h4>
+	                            <p class="category">Spring 2018 final project</p>
+	                        </div>
+	                        <div class="content">
+	                        	<p>This is the final project of the course ITMD 515.</p>
+	                        	<p>Group members:</p>
+	                        	<ul>
+	                        		<li>Francisco de Paula García de la Corte</li>
+	                        		<li>Raquel Noblejas Sampedro</li>
+	                        	</ul>
+	                        	<p>We have developed a package delivery and private transportation platform, in which it is possible to create an account, login and request a ride. Administrators can ban any users and drivers can dispatch rides. The website uses Bootstrap to power the design and Java EE as its backend technology.</p>
+		                        <div class="footer">
+	                                <hr>
+	                                <div class="stats">
+	                                    <i class="fa fa-file-code-o"></i> Developed with Bootstrap and Java EE
+	                                </div>
+	                            </div>
+                            </div>
+                        </div>
+					</div>
                 </div>
             </div>
         </div>

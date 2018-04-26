@@ -29,8 +29,8 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Profile</h4>
-                                    <% if (session.getAttribute("notification_msg") != null) { %>
-					                     <p style="color:red;">${error_message}</p>
+                                    <%if (session.getAttribute("notification_msg") != null) { %>
+                                    	<p style="color:red;"><%=session.getAttribute("notification_msg")%></p>
 					                <% } %>
                                 </div>
                                 <div class="content">

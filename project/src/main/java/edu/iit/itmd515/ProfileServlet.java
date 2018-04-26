@@ -85,34 +85,35 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("New pass introduced:" + request.getParameter("newPassword"));
 		if (role.equals("admin")){
 			Administrator a = new Administrator();
 			a.setEmail(email);
 			a.setPassword(password);
-			System.out.println("New password introduced:" + request.getParameter("newPassword"));
-			changePassword(a, (String)request.getParameter("newPassword"));
+			changeData(a,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
 		}else if(role.equals("consumer")){
 			Consumer c = new Consumer();
 			c.setEmail(email);
 			c.setPassword(password);
 			System.out.println("New password introduced:" + request.getParameter("newPassword"));
-			changePassword(c, (String)request.getParameter("newPassword"));
+			changeData(c,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
+			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
 			System.out.println("Password changed");
 		}else if(role.equals("driver")){
 			Driver d = new Driver();
 			d.setEmail(email);
 			d.setPassword(password);
+			request.getSession().setAttribute("email", (String)request.getParameter("email"));
 			System.out.println("New password introduced:" + request.getParameter("newPassword"));
-			changePassword(d, (String)request.getParameter("newPassword"));
+			changeData(d,(String)request.getParameter("name"), (String)request.getParameter("email"), (String)request.getParameter("phone"), (String)request.getParameter("cardNum"),(String)request.getParameter("newPassword"));
 			request.getSession().setAttribute("password", (String)request.getParameter("newPassword"));
 		}
 		response.sendRedirect("login-signup.jsp");
 	}
 	
-	public void changePassword(Object u,String newPass){
+	public void changeData(Object u,String name, String email, String phone, String cardNum, String newPass){
 	     Session session = HibernateUtil.openSession();
 	     Transaction tx = null;
 	     Long id = 0L;
@@ -123,6 +124,10 @@ public class ProfileServlet extends HttpServlet {
 	        	 ConsumerDAO d = new ConsumerDAOImpl();
 	        	 id = d.getConsumerId((Consumer)u);
 	        	 u = d.getConsumerById(id);
+	        	 ((Consumer) u).setName(name);
+	        	 ((Consumer) u).setEmail(email);
+	        	 ((Consumer) u).setPhone(phone);
+	        	 ((Consumer) u).setCardNumber(cardNum);
 	        	 ((Consumer) u).setPassword(newPass);
 	        	 Consumer update = (Consumer)session.merge(u);
 	        	 System.out.println("User updated");
@@ -130,6 +135,9 @@ public class ProfileServlet extends HttpServlet {
 	        	 DriverDAO d = new DriverDAOImpl();
 	        	 id = d.getDriverId((Driver)u);
 	        	 u = d.getDriverById(id);
+	        	 ((Driver) u).setName(name);
+	        	 ((Driver) u).setEmail(email);
+	        	 ((Driver) u).setPhone(phone);
 	        	 ((Driver) u).setPassword(newPass);
 	        	 Driver update = (Driver)session.merge(u);
 	        	 System.out.println("User updated");
@@ -137,6 +145,7 @@ public class ProfileServlet extends HttpServlet {
 	        	 AdministratorDAO d = new AdministratorDAOImpl();
 	        	 id = d.getAdministratorId((Administrator)u);
 	        	 u = d.getAdministratorById(id);
+	        	 ((Administrator) u).setEmail(email);
 	        	 ((Administrator) u).setPassword(newPass);
 	        	 Administrator update = (Administrator)session.merge(u);
 	        	 System.out.println("User updated");

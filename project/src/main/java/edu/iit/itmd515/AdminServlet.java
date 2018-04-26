@@ -3,10 +3,19 @@ package edu.iit.itmd515;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.json.JSONObject;
+
+import edu.iit.itmd515.model.AdministratorDAO;
+import edu.iit.itmd515.model.AdministratorDAOImpl;
+import edu.iit.itmd515.model.Consumer;
+import edu.iit.itmd515.model.Driver;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,11 +39,15 @@ import geo.google.datamodel.GeoUsAddress;
 public class AdminServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private List<Consumer> consumers = new ArrayList<Consumer>();
+	private List<Driver> drivers = new ArrayList<Driver>();
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		
-		
-		if (req.getSession().getAttribute("role") != "Administrator") {
+		 findDrivers();
+		 findConsumers();
+	     req.setAttribute("drivers", drivers);
+	     req.setAttribute("consumers", consumers);
+		if (req.getSession().getAttribute("role") != "admin") {
 			req.getSession().setAttribute("content", "");
 			RequestDispatcher view = req.getRequestDispatcher("forbidden.jsp");
 			view.forward(req,res);
@@ -44,6 +57,46 @@ public class AdminServlet extends HttpServlet {
 			view.forward(req,res);
 		}
 		
+	}
+	
+	public void findDrivers(){
+	     Session session = HibernateUtil.openSession();
+	     Transaction tx = null;
+	     try {
+	         tx = session.getTransaction();
+	         tx.begin();
+	         AdministratorDAO a = new AdministratorDAOImpl();
+	         drivers = a.getAllDrivers();
+	         System.out.println(drivers.toString());
+	         tx.commit();
+	     } catch (Exception e) {
+	         if (tx != null) {
+	             tx.rollback();
+	         }
+	         e.printStackTrace();
+	     } finally {
+	         session.close();
+	     } 
+
+	}
+	public void findConsumers(){
+	     Session session = HibernateUtil.openSession();
+	     Transaction tx = null;
+	     try {
+	         tx = session.getTransaction();
+	         tx.begin();
+	         AdministratorDAO a = new AdministratorDAOImpl();
+	         consumers = a.getAllConsumers();
+	         System.out.println(consumers.toString());
+	         tx.commit();
+	     } catch (Exception e) {
+	         if (tx != null) {
+	             tx.rollback();
+	         }
+	         e.printStackTrace();
+	     } finally {
+	         session.close();
+	     } 
 	}
 	
 	/**

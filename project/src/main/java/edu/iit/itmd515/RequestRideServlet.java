@@ -95,8 +95,8 @@ public class RequestRideServlet extends HttpServlet {
 		Request r = new Request();
 		r.setOrigin(origin);
 		r.setDestination(destination);
-		r.setDistance(distance);
-		r.setPrice(cost);
+		r.setDistance(String.valueOf(distance));
+		r.setPrice(String.valueOf(cost));
 		r.setType(reqType);
 		saveRequest(r);
 		RequestDispatcher view = req.getRequestDispatcher("request-ride.jsp");

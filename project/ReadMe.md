@@ -21,3 +21,23 @@ This web application is deployed with a mySQL databse launched on localhost:8080
 
 *persistence.xml* at project/src/main/resources/META-INF
 *hibernate.cfg.xml* at project/src/main/resources/
+
+## Web application look
+
+The design has been done with Bootstrap and some javascript functions to dynamically edit it.
+
+![](/project/images/register.png)
+
+![](/project/images/fail_login.png)
+
+![](/project/images/profile_view.png)
+
+![](/project/images/profile_changed.png)
+
+![](/project/images/driver_view.png)
+
+![](/project/images/request_view.png)
+
+![](/project/images/request_saved_DB.png)
+
+![](/project/images/admin.png)

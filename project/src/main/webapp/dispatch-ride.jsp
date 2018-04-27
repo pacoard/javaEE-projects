@@ -53,7 +53,7 @@
 													    <td><%=req.getPrice()%></td>
                                                 		<td>
 		                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
-		                                                        href="/dispatch/id">
+		                                                        href="/dispatch-ride?id=<%=req.getId()%>">
 		                                                        <i class="fa fa-check"></i>
 		                                                    </a>
                                                			</td>

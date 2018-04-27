@@ -42,6 +42,7 @@ public class AdminServlet extends HttpServlet {
 	private List<Consumer> consumers = new ArrayList<Consumer>();
 	private List<Driver> drivers = new ArrayList<Driver>();
 	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		 findDrivers();
 		 findConsumers();
@@ -56,7 +57,6 @@ public class AdminServlet extends HttpServlet {
 			RequestDispatcher view = req.getRequestDispatcher("admin.jsp");
 			view.forward(req,res);
 		}
-		
 	}
 	
 	public void findDrivers(){
@@ -67,7 +67,6 @@ public class AdminServlet extends HttpServlet {
 	         tx.begin();
 	         AdministratorDAO a = new AdministratorDAOImpl();
 	         drivers = a.getAllDrivers();
-	         System.out.println(drivers.toString());
 	         tx.commit();
 	     } catch (Exception e) {
 	         if (tx != null) {
@@ -87,7 +86,6 @@ public class AdminServlet extends HttpServlet {
 	         tx.begin();
 	         AdministratorDAO a = new AdministratorDAOImpl();
 	         consumers = a.getAllConsumers();
-	         System.out.println(consumers.toString());
 	         tx.commit();
 	     } catch (Exception e) {
 	         if (tx != null) {

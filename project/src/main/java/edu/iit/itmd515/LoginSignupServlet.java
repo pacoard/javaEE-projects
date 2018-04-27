@@ -199,6 +199,7 @@ public class LoginSignupServlet extends HttpServlet {
 				result = login(driver); 
 			     if(result){
 			    	 request.getSession().setAttribute("role", "driver");
+			    	 request.getSession().setAttribute("id", id);
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
 			    	 response.sendRedirect("welcome.jsp");

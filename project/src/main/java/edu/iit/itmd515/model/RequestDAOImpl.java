@@ -19,7 +19,7 @@ public class RequestDAOImpl implements RequestDAO{
 
 	// Singleton 
 	private static RequestDAOImpl instance;
-	private RequestDAOImpl () {}
+	public RequestDAOImpl () {}
 	public static RequestDAOImpl getInstance() {
 		if (instance == null)
 			instance = new RequestDAOImpl();
@@ -42,7 +42,7 @@ public class RequestDAOImpl implements RequestDAO{
 	}
 	public Object getRequestByid(Long id) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Consumer c = em.find(Consumer.class, id);
+		Request c = em.find(Request.class, id);
 		em.close();
 		return c;
 	}

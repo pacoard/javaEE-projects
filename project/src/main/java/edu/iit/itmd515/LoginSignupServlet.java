@@ -76,7 +76,7 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 request.getSession().setAttribute("role", "admin");   
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
-			    	 RequestDispatcher view = request.getRequestDispatcher("admin.jsp");
+			    	 RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
 			    	 view.forward(request,response);
 			    	 System.out.println("Login/Registration correct!");
 			     }
@@ -101,7 +101,7 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 request.getSession().setAttribute("role", "driver");   
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
-			    	 RequestDispatcher view = request.getRequestDispatcher("dispatch-ride.jsp");
+			    	 RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
 			    	 view.forward(request,response);
 			    	 System.out.println("Login/Registration correct!");
 			     }
@@ -201,7 +201,7 @@ public class LoginSignupServlet extends HttpServlet {
 			    	 request.getSession().setAttribute("role", "driver");
 			    	 request.getSession().setAttribute("email", email);
 			    	 request.getSession().setAttribute("password", password);
-			    	 response.sendRedirect("dispatch-ride.jsp");
+			    	 response.sendRedirect("welcome.jsp");
 			    	 System.out.println("Login/Registration correct!");
 			     }
 			     else{ 

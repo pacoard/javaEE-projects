@@ -54,7 +54,7 @@
                                                 		<td>
 		                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
 		                                                        href="/admin/ban/ID">
-		                                                        <i class="fa fa-ban"></i>
+		                                                        <i class="fa fa-check"></i>
 		                                                    </a>
                                                			</td>
                                                		</tr>

@@ -53,7 +53,7 @@
 													    <td><%=req.getPrice()%></td>
                                                 		<td>
 		                                                    <a  class="btn btn-simple btn-danger btn-icon remove"
-		                                                        href="/admin/ban/ID">
+		                                                        href="/dispatch/id">
 		                                                        <i class="fa fa-check"></i>
 		                                                    </a>
                                                			</td>

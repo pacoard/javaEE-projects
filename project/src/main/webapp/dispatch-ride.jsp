@@ -30,7 +30,7 @@
 <div class="col-md-6">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Ban drivers</h4>
+                                    <h4 class="title">Available rides</h4>
                                 </div>
                                 <div class="content table-responsive table-full-width">
                                     <table class="table table-striped">
@@ -44,7 +44,7 @@
                                         <tbody>
                                             <!-- For loop to inyect values -->
 													<% 
-													  List<Request> requests= (List<Request>)request.getAttribute("consumers"); 
+													  List<Request> requests= (List<Request>)request.getAttribute("requests"); 
 													if(requests != null){  
 													for (Request req: requests) {   
 													%>
